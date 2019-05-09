@@ -1,2 +1,2 @@
-# ntu-ml-2019
+# ntu-ml-notes
 
