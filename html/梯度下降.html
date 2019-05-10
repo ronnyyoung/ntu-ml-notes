@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>机器学习发展与概述</title>
+<title>梯度下降</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,66 +13116,16 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-machine-learning">Introduction to machine learning<a class="anchor-link" href="#Introduction-to-machine-learning">&#182;</a></h1><h2 id="1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">1. AI VS. Machine Learning VS. Deep Learning<a class="anchor-link" href="#1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 价值1个亿的AI核心代码</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">input_str</span> <span class="o">==</span> <span class="s2">&quot;quit&quot;</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;吗&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;？&#39;</span><span class="p">,</span> <span class="s1">&#39;！&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">input_str</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>在吗？
-在！
-你好
-你好
-能听懂汉语吗？
-能听懂汉语！
-真的吗？
-真的！
-quit
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>AI实际是一个很早就提出来的概念，早在1950年左右，AI概念就已经在全世界流行，虽然那时候计算机也才刚刚问题世。但那个时候的一些AI系统大多都是基于规则的，系统里的逻辑都是人工设定好的逻辑（rule based），而且逻辑都比较简单,这种通过人工手动设计规则的智能是一种伪智能，它永远不可能超过人类，它本身没有任何的free style, 这个时代实际上是人们提出了一种人工智能的愿景，但是没有找到很好的实现AI的方法。</p>
-<p>下面的插图则描绘了当时使用大量<code>hand-craft</code>规则来实现人工智能的尴尬情况。
-<img src="../images/001_ai_inside.jpg" alt="AI Inside"></p>
-<p>1980年左右开始出来了一批以概率统计为基石的机器学习的方法，比如MLP、SVM、Desion Tree等，这些方法使得早期的一些AI概念得到一定的实现。</p>
-<p>到了2010年前后，随着互联网的普及，大量数据产生了，同时计算机的计算能力随着GPU在通用计算上的应用得到大幅度的提升。Deep Learning这个新词汇出现在人们的视野当中，并以星火燎原之势火遍了全球。它实际是算是机器学习中的一种方法，只是因为比较有效，所以流行起来。</p>
-<p>总体来说，50年代的AI实际是一种概念的提出与人们美好的愿景，80年代开始人们找到了机器学习这个手段来实现当初的人工智能的梦想，但受限于方法与计算能力，那个阶段的机器学习方法只在很小的一领域得到了应用。到了21世纪，随着深度学习的野蛮生长，机器学习的方法已经在向各个行业渗透，而且在很多领域取得了比人类更高的准确率，AI开始真正的走向了人类的生活并参与到人类的行业生产中。</p>
+<h1 id="&#26356;&#21152;&#26377;&#25928;&#30340;&#26799;&#24230;&#19979;&#38477;">&#26356;&#21152;&#26377;&#25928;&#30340;&#26799;&#24230;&#19979;&#38477;<a class="anchor-link" href="#&#26356;&#21152;&#26377;&#25928;&#30340;&#26799;&#24230;&#19979;&#38477;">&#182;</a></h1><p>在线性回归的小节中，我们已经通过宝可梦的例子介绍了怎么使用梯度下降来求解损失函数的最小化问题，但在那里我们只是简单的列出了做梯度下降的关键3个步骤，没有进一步阐明，为什么梯度下降可以Work，以及使用梯度下降可能会遇到什么问题，这些问题如何解决，这篇文章将回过头来一一阐述。</p>
+<p>我们先回顾一下，在机器学习第3步中，我们如何使用梯度下降来求解损失函数的最小值问题。我们的问题数学表达是：</p>
+$$\theta^* = arg\min_{\theta}L(\theta)$$<p>其中$L$是我们定义的评价函数（损失函数），$\theta$是模型的参数。我们希望找到$\theta^*$使得$L$达到最小。</p>
+<p>假设我们$\theta$是一个二维的向量，有两个参数$\{\theta_1, \theta_2\}$</p>
+<p>第一步，我们随机初始化$\theta = \theta^0 = \begin{bmatrix}\theta_1^0 \\ \theta_2^0\end{bmatrix}$</p>
+<p>第二步，计算$L(\theta)$在$\theta^0$处对$\theta$的偏导数$\nabla L(\theta) = \begin{bmatrix}\nabla L(\theta_1^0)\\ \nabla L(\theta_2^0)\end{bmatrix}$</p>
+<p>第三步，更新$\theta$：$\theta^1 = \theta^0 - \eta \nabla L(\theta1^0)$</p>
+<p>第四步：重复迭代第二步与第三步，经过n的迭代后，最终求得$\theta^n$</p>
+<p>上面的步骤也可以用可视化的方法表达如下：</p>
+<p><img src="../images/026_gradinet_descent_vis.jpg" alt="Gradinet Descent Visualization"></p>
 
 </div>
 </div>
@@ -13183,20 +13133,31 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-What-is-Machine-Learning?">2. What is Machine Learning?<a class="anchor-link" href="#2.-What-is-Machine-Learning?">&#182;</a></h2><p>从字面上来理解，Machine Learning一拆为二，Machine指明了主体是一个Machine，我们可以理解为一个Computer或者是一个程序，Learning说明了这个程序具有学习的功能，能够通过大量数据的输入来自动的学习到这些数据的一些潜在规律或形式，在下次再看到一些新的数据时，可以分辨或认出。</p>
-<p>所以<strong>机器学习</strong>在我看来可以定义为：“Giving Computers the Ability to Learn from Data”。</p>
-<p>常见的学习任务比如：</p>
+<h2 id="Tuning-your-learning-rates">Tuning your learning rates<a class="anchor-link" href="#Tuning-your-learning-rates">&#182;</a></h2><p>如果我们在线性回归中有实际用梯度下降的方法去求解一个最优化问题，我们就会发现，如何选择合适的learning rate是一个很头疼的问题，你很可能需要多次的尝试才能找到一个合适的<code>learning rate</code>。如果不恰当的选择<code>learning rate</code>会遇到什么问题呢？</p>
 <ul>
-<li>语音识别：通过大量语音与对应语言词汇（句子）的学习，机器可以把新输出的语音转换为对应的文本。</li>
-<li>图像识别：机器学习学习大量猫或狗的照片，可以对新的猫或狗的照片进行辨识。</li>
+<li>如果<code>learning rate</code>太小（如下图蓝色细条），模型参数每一次迭代更新的就很慢，我们需要很次的迭代才能达到一个较好的效果。当然这种情况，除了多花点时间，也没什么大的问题。</li>
+<li>如果learning rate太大（如下图的绿色和黄色的线），模型参数每次更新幅度很大，在接近极小值时，就很容易越过去，而且当<code>learning rate</code>太大时，还会造成整个Loss越来越大（需要思考为什么）。</li>
 </ul>
-<p>所以从任务上来看，机器学习就是在找一个Function,这个Function可以根据输出得到一个想要的输出，比如：</p>
+<p><img src="../images/027_learning_rate.jpg" alt="Learning Rate"></p>
+<p>在实验时，由于我们的模型往往有很多的参数，所以我们不太可能画出上面左边的图像，但是我们可以画出随着迭代次数，整个模型在训练集上的error的变化情况，如上图中右边所示，根据变化的趋势来判断我们选择的<code>learning rate</code>是否合适。</p>
+<p>既然选择合适的<code>learning rate</code>这么重要，那有没有一些自动化的方法来自动的调整<code>learning rate</code>呢。有！而且有很多种，针对<code>learning rate</code>的调整学术界已经提出了很多种方法，比如：有基于Moment的方法Nesterov，也有基于所有参数有不同学习率的Adagrad方法。也有将两者融合在一起的Adam方法。这里先只按照Lecture介绍一下Adagrad，有机会，会把其他的方法也补充过来。</p>
+<p>[TODO]把其他几种参数更新的方法也加以说明</p>
+<p>Adagrad的两个核心思想</p>
 <ul>
-<li>Speech Recognition: f(一段语音信号) = “How are You”</li>
-<li>Image Recognition: f(一张猫的图片) = “Cat”</li>
-<li>Playing Go: f(当前的棋局) = “5-5”（next move）</li>
-<li>Dialogue System: f("Hi") = "Hello"</li>
+<li>随着迭代次数越来越多，我们逐步的减少learning rate，因为在刚开始，我们随机初始化模型参数，这时候往往距离最优解还比较远，我们可以用较大的learning rate来快速到达最优解的附近，然后再用较小的learning rate慢慢的接近最优解。</li>
+<li>对所有不同的参数，我们给它们不同的学习率。</li>
 </ul>
+<p>所以Adagrad的参数更新方法如下：</p>
+$$\theta^{t+1} = \theta_t - \frac{\eta^t}{\sigma^t}g^t$$$$\eta^t = \frac{\eta}{\sqrt{t+1}}, \sigma^t = \sqrt{\frac{1}{t+1}\sum_i^t g^i}$$<p>其中$g^t$是第t次迭代$L(\theta)$的梯度，$t$是迭代次数。经过化简后，我们可以得到</p>
+$$\theta^{t+1} = \theta_t - \frac{\eta}{\sqrt{\sum_i^t g^i}}g^t$$<p>如果你仔细看上面的式子，你可能会有一个疑问，根据梯度下降算法，梯度越大，往往意味着离最优解越远，我们应该选择较大的更新步长，但从上面的公式中中看到分母项为$\sqrt{\sum_i^t g^i}$，里面包含了当前点的梯度。如何解释这种设计？</p>
+<p>直觉上的解释，这样的设计可以抑制一些梯度的波动（为什么会产生梯度波动，以及梯度波动有什么 不好？）情况。</p>
+<p><img src="../images/028_adagrad.jpg" alt="AdaGrad"></p>
+<p>另外一种解释从：我们要对“梯度越大，就说明我们离极植点越远”这句话的正确性进行一下验证。</p>
+<p><img src="../images/029_adagrad.jpg" alt="AdaGrad"></p>
+<p>上面是损失函数关于$w_1$和$w_2$的变化曲线，先看蓝色曲线上的2个点a和b,a点的梯度值是大于b点的梯度值的，a点离极值点比b点更远。结论成立，同样看绿色曲线上的c和d两点，结论也同样成立。但是如果我们对比a点和c点，c距离极植点比a要近，但是c点的梯度值比a点的梯度值要小。</p>
+<p>所以<strong>Larger $1^{\text{st}}$ order derivative means far from the minima</strong>这句话是不对的。在不同参数上就不成立。</p>
+<p>那距离minia的远近可以用什么来评估呢？我们怎么确定最佳的步幅呢，如果学习过牛顿法，或者其他二阶优化算法，就可以知道，最好的step是一阶层数/二阶导数。</p>
+<p>我们的Adagrad的形式可以看作为一阶梯度/二阶梯度的近似。</p>
 
 </div>
 </div>
@@ -13204,17 +13165,13 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Machine-Learning-Framework">3. Machine Learning Framework<a class="anchor-link" href="#3.-Machine-Learning-Framework">&#182;</a></h2><p>那么我们如何使用Machine Learning的方法（模型）来做上面的学习任务呢？简单来说只需要三步，就像把大象放进冰箱这么简单。</p>
-<p><img src="../images/002_three_steps.jpg" alt="three_steps"></p>
-<ul>
-<li>Step1: Define a set of funciton</li>
-<li>Step2: Goodness of function</li>
-<li>Step3: Pick the best function</li>
-</ul>
-<h3 id="3.1-Define-a-set-of-funciton">3.1 Define a set of funciton<a class="anchor-link" href="#3.1-Define-a-set-of-funciton">&#182;</a></h3><p>当我们在根据一个特定的问题设计机器学习算法时，首先第一步就是要想好我们的Function Set，我们需要从function set中挑选适合问题的function。那实际上如何来定义这样的Function Set呢，一般需要一些Domain Knowledge，而且一些概率统计的方法也为我们选择function set提供了指导。</p>
-<p>比如对于房屋价格的预测问题，我们就可以挑选线性函数（$\sum_i x_iw_i$）作为我们的Function set，具体挑选哪一个线性函数呢，那将由第二步和第三步来完成。</p>
-<h3 id="3.2-Goodness-of-function">3.2 Goodness of function<a class="anchor-link" href="#3.2-Goodness-of-function">&#182;</a></h3><p>有了一个Function Set后，我们需要定义一个评价函数，用来说明我们从Function set中选择的function的好坏。那么这个评价函数就是关于我们挑选的模型（function）的函数，到后面就知道了，也就是经过常到的<strong>损失函数</strong>。</p>
-<h3 id="3.3-Pick-the-best-function">3.3 Pick the best function<a class="anchor-link" href="#3.3-Pick-the-best-function">&#182;</a></h3><p>当我们有一个function set并且有了关于function的评价函数后，我们就可以挑选出最好的一个function来作为我们要解决的问题的模型函数了。这里往往是一个最优化的问题。</p>
+<h2 id="Stochastic-Gradinet-Descent">Stochastic Gradinet Descent<a class="anchor-link" href="#Stochastic-Gradinet-Descent">&#182;</a></h2><p>回顾一下我们线程回归模型的评价函数的形式为：</p>
+$$L = \sum_n\left(\hat{y}^n - (b + \sum w_ix_i^n)\right)^2$$<p>当我们的数据量很大时，计算L的梯度值是一个非常耗时的事件，导致我们每迭代一次都需要较长的时间。</p>
+<p>Stochactic Gradinet Descent提出来一次迭代只使用一个样本计算梯度，对应的损失函数变为了：</p>
+$$L = \left(\hat{y}^n - (b + \sum w_ix_i^n)\right)^2$$<p>很明显这样速度更快，很多人在这里就产生了疑问，这样能有效吗？可以做这样的简化吗？答案是肯定的，至于为什么？有机会单独解释。</p>
+<p>[TODO]解释为什么随机梯度下降会有效。</p>
+<p>下面是使用梯度下降和随机梯度下降的示例，在梯度下降中，使用20个训练样本只更新了一次参数，而右图显示了在随机梯度下降中使用了20个样本进行了20次的迭代，虽然会产生波动，但总体的方向是对的。</p>
+<p><img src="../images/030_sgd.jpg" alt="SGD"></p>
 
 </div>
 </div>
@@ -13222,21 +13179,11 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-Learning-Map">4. Learning Map<a class="anchor-link" href="#4.-Learning-Map">&#182;</a></h2><p><img src="../images/003_learning_map.jpg" alt="LearnigMap"></p>
-<h3 id="4.1-Regession">4.1 Regession<a class="anchor-link" href="#4.1-Regession">&#182;</a></h3><p>回归模型有一个很明显的特点是：它的输出是一个<code>Scalar</code>，比如预测明天的PM2.5。</p>
-<h3 id="4.2-Classification">4.2 Classification<a class="anchor-link" href="#4.2-Classification">&#182;</a></h3><p>分类问题可以分为二分类或多分类问题。</p>
-<p>对于二分类问题，它的输出一般是“是”或“否”，在数学上我们可以用0或1来表示，也可以用-1与+1来表示，到底用什么来表示，其际上对于问题本身是无所谓的，那在实际的机器学习方法中，我们会根据方法的数学表达的方便来选择合适的值。常见的二分类问题比如垃圾邮件的分类、疾病的诊断等。</p>
-<p>对于多分类问题它的输出是一个类别的标签，在数学表达上我们常用的方法是把输出表示为一个长度等于类别数的一个向量$y = [y_1,y_2,\cdots,y_k]$，其中$k$为类别数。对于输出$y$，哪一个分量最大，则代表输入属于哪一类。常见的多分类问题有：图片的分类、新闻的主题归类等。</p>
-<h3 id="4.3-Semi-supervised-Learning">4.3 Semi-supervised Learning<a class="anchor-link" href="#4.3-Semi-supervised-Learning">&#182;</a></h3><p>上面说的回归与分类问题都是属于有监督的学习问题，它的特点是训练数据都是带有标签的。而实际上搜集大量带标签的数据是一件很难的事情。那针对于现实中大量无标准的数据，我们可以采用半监督的学习方法以及无监督的学习方法。</p>
-<p>这里需要区别的是半监督学习与迁移学习的不同。</p>
-<p>半监督学习解决的问题中有标签的数据与无标签数据是有关系的，属于同一类型的问题，比如我们已经有一些猫和狗的带标签照片，如果把大量没带标签的猫和狗的照片用起来，这是半监督学习要考虑的事。而如果我们已经有很多带标签的猫和狗的照片，我们想训练一个模型来识别大像和老虎的图片，那么这就属于迁移学习的范畴了。</p>
-<h3 id="4.4-Transfer-learning">4.4 Transfer learning<a class="anchor-link" href="#4.4-Transfer-learning">&#182;</a></h3><p>迁移学习解决的是利用已有的一些模型，来做一些新的任务，新任务里的数据和之前模型训练用到的数据是不同类的数据，比如之前的模型是一个动物的分类器，而我们想解决在植物数据集上的的分类问题。</p>
-<p>这个方向只所以能work的原因很大是因为，深度学习的浅层网络部分往往学习到的是一些公共的知识。</p>
-<h3 id="4.5-Unsupervised-Learning">4.5 Unsupervised Learning<a class="anchor-link" href="#4.5-Unsupervised-Learning">&#182;</a></h3><p>无监督学习研究如何让机器通过大量没有label的数据，自动的学习到数据与数据之间的差异以及数据背后的一些潜在的结构或分布。比如通过学习大量图片后，机器能否根据一个code(编码后的数据)自动的生成一张逼近真实的照片</p>
-<h3 id="4.6-Structured-Learning">4.6 Structured Learning<a class="anchor-link" href="#4.6-Structured-Learning">&#182;</a></h3><p>Structured learning是分类与回归问题之外的一种机器学习方法，它的学习目标不是输出一个<code>Scalar</code>或者一个类别标签。而是一个带有结构的数据。比如在语音识别中输出是一个句子，在目标检测中，输出的是目标的位置。</p>
-<h3 id="4.7-Reinforcement-Learning">4.7 Reinforcement Learning<a class="anchor-link" href="#4.7-Reinforcement-Learning">&#182;</a></h3><p>强化学习有点像有监督的学习，但两者又有很大的不同。有监督的学习是learn from teacher，而强化学习是learn from critics。强化学习往往是针对一个多步骤的任务，每一步骤并不能得到实时的反馈，只能根据最终整个任务的完成情况或评价结果来得到反馈。</p>
-<p>举例：AlpahGo中同时用到了有监督的学习与强化学习，在刚才始学习如何下棋时，用的是有监督的学习，根据一些棋谱学习每一步之后下一步应该怎么下。当机器具有基本的下棋能力后，再开始根据每一局对弈的结果进行强化学习，通过机器与机器的下棋来产生大量的棋局进行强化学习。</p>
-<p><img src="../images/004_reinforcement_learning.jpg" alt="Reinforcement Learning"></p>
+<h2 id="Feature-Scaling">Feature Scaling<a class="anchor-link" href="#Feature-Scaling">&#182;</a></h2><p>Feature Scaling是机器学习中一种常见的数据预处理方法，它的主要想法是让数据的每个特征维度都尽可能的在一个尺度上。</p>
+<p>当不同特征之间的scale相差比较大时，直接使用梯度下降，会遇到很多训练上的问题，比如收敛慢，容易振荡等。下图展示了，两种情况下梯度下降中可能的参数更新轨迹。</p>
+<p><img src="../images/031_scaling.jpg" alt="Feature Scaling"></p>
+<p>那具体怎么来做Feature Scaing呢，一句话概括：减均值，除方差。但这里要注意的是我们操作的对像是很多个feature vector。</p>
+<p><img src="../images/032_scaling.jpg" alt="Feature Scaling"></p>
 
 </div>
 </div>
@@ -13244,12 +13191,24 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#24635;&#32467;">&#24635;&#32467;<a class="anchor-link" href="#&#24635;&#32467;">&#182;</a></h2><ul>
-<li>AI、机器学习、深度学习的区别。AI是很早就提出来的一种构想，但早期AI都是基于规则的，其中引入的那个漫画比较搞笑，非常讽刺。后来出现了一些经典的机器学习方法，如感知机、神经网络、SVM、决策树、AdaBoosting等。10年后随着算力和数据的提升，神经网络开始变得work起来，并且包装成了新的名词“深度学习”。</li>
-<li>如何定义机器学习。这个目前没有统一的定义，但合理的说法是：让机器从<strong>数据</strong>中来<strong>学习</strong>，并能做<strong>预测</strong>。</li>
-<li>如何用机器学习来解决问题呢，简单概括为3个步骤: 1) 选择一类模型或方法； 2) 定义损失函数； 3) 优化损失函数。</li>
-<li>最后对机器学习中一些场景、任务类型和学习模型进行了分类。需要特别注意的是半监督学习和迁移学习的区别，以及强化学习和监督学习的区别。</li>
-</ul>
+<h2 id="Gradinet-Descent-Theory">Gradinet Descent Theory<a class="anchor-link" href="#Gradinet-Descent-Theory">&#182;</a></h2><p>无论是note1还是本个note的上面的部分，都回避了一个问题就是，为什么我们选择梯度反方向作为我们参数更新的方向，有没有比这个方向更好的，下降速度更快的方向呢？</p>
+<p>从梯度下降的第二步开始，我们在随机的选择了一个参数后，我们怎么来找下一步应该往哪个方向更新呢，更新多少呢？如果大家熟悉的下山作为类比，我们站在山上的某位置上，我们需要找到最快的下山路径。</p>
+<p>不如从脚下从发，从眼下的一个小区域开始，我们很容易找到附近的一个小区域内那个损失函数最小的点，然后我们把参数朝那个方向移动。当到达一个新的位置后，我们再次考虑附近的一个小的邻域，找到邻域内最小的点，再次更新。就这样一步一步的，我们会慢慢的接近极值点。</p>
+<p><img src="../images/033_local_step.jpg" alt="Local Step"></p>
+<p>对于我们的损失函数$L(\theta)$，在位置$\theta^0$处，我们如何找到$\theta^0$附近的一小范围内的极值呢，我们使用Taler展开，把$L(\theta)$在$\theta^0$处用一个多项式函数进行逼近，把问题转化为求一个多项式函数的极植，这样就容易多了。</p>
+$$L(\theta) = L(\theta^0) + \frac{\partial L(\theta^0)}{\partial \theta_1}(\theta_1 - \theta_1^0) + \frac{\partial L(\theta^0)}{\partial \theta_2}(\theta_2 - \theta_2^0) + \cdots$$<p>在我们选定的一个小范围内$(\theta-\theta^0_1)^2+(\theta-\theta^0_1)^2\le d^2$，我们需要找到能使上面的式子的值最小。</p>
+<p>我把用$u,v$来表示$\frac{\partial L(\theta^0)}{\partial \theta_1}, \frac{\partial L(\theta^0)}{\partial \theta_2}$， 用$\Delta\theta_1,\Delta\theta_2$来表示$\theta-\theta^0_1,\theta-\theta^0_2$，那我们问题转化为</p>
+$$arg\min_{\Delta\theta} (u\Delta\theta_1 + v\Delta\theta_2), \Delta\theta_1^2 + \Delta\theta_2^2\le d^2$$<p>很容易得到$\Delta\theta_1,\Delta\theta_2$应该和$u,v$反向。所以我们梯度下降中选择的方向就是梯度方向。学习率$\eta$实际上是控制了我们选择了那个邻域的大小，所以如果learning rate选择太大，梯度下降算法从原理上讲就失效了。</p>
+<p><img src="../images/034_best_theta.jpg" alt="best theta"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#24635;&#32467;">&#24635;&#32467;<a class="anchor-link" href="#&#24635;&#32467;">&#182;</a></h2><p>这一节详细介绍了梯度下降的如何工作的，并说明梯度下降中可能遇到的一些坑，如何用一些改进的优化算法来让我们梯度下降work的更好。<code>learning rate</code>是调梯度下降的核心，这里出现了一系列的方法，而且现在还在不断有新的论文在提出新的方法。基本就两个思路：１）如何收敛的更快；２）如何收敛到正确的位置。</p>
+<p>最后介绍了梯度下降的一个核心数学问题：为什么我们选择梯度反方向作为我们参数更新的方向，有没有比这个方向更好的，下降速度更快的方向呢？　主要是利用了平滑函数局部可以用多项式拟合，从而求取局部最小值，这样来证明。在学习这门课到这里的时候，真是大呼过瘾。</p>
 
 </div>
 </div>

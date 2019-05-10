@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>机器学习发展与概述</title>
+<title>卷积神经网络</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,66 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-machine-learning">Introduction to machine learning<a class="anchor-link" href="#Introduction-to-machine-learning">&#182;</a></h1><h2 id="1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">1. AI VS. Machine Learning VS. Deep Learning<a class="anchor-link" href="#1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 价值1个亿的AI核心代码</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">input_str</span> <span class="o">==</span> <span class="s2">&quot;quit&quot;</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;吗&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;？&#39;</span><span class="p">,</span> <span class="s1">&#39;！&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">input_str</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>在吗？
-在！
-你好
-你好
-能听懂汉语吗？
-能听懂汉语！
-真的吗？
-真的！
-quit
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>AI实际是一个很早就提出来的概念，早在1950年左右，AI概念就已经在全世界流行，虽然那时候计算机也才刚刚问题世。但那个时候的一些AI系统大多都是基于规则的，系统里的逻辑都是人工设定好的逻辑（rule based），而且逻辑都比较简单,这种通过人工手动设计规则的智能是一种伪智能，它永远不可能超过人类，它本身没有任何的free style, 这个时代实际上是人们提出了一种人工智能的愿景，但是没有找到很好的实现AI的方法。</p>
-<p>下面的插图则描绘了当时使用大量<code>hand-craft</code>规则来实现人工智能的尴尬情况。
-<img src="../images/001_ai_inside.jpg" alt="AI Inside"></p>
-<p>1980年左右开始出来了一批以概率统计为基石的机器学习的方法，比如MLP、SVM、Desion Tree等，这些方法使得早期的一些AI概念得到一定的实现。</p>
-<p>到了2010年前后，随着互联网的普及，大量数据产生了，同时计算机的计算能力随着GPU在通用计算上的应用得到大幅度的提升。Deep Learning这个新词汇出现在人们的视野当中，并以星火燎原之势火遍了全球。它实际是算是机器学习中的一种方法，只是因为比较有效，所以流行起来。</p>
-<p>总体来说，50年代的AI实际是一种概念的提出与人们美好的愿景，80年代开始人们找到了机器学习这个手段来实现当初的人工智能的梦想，但受限于方法与计算能力，那个阶段的机器学习方法只在很小的一领域得到了应用。到了21世纪，随着深度学习的野蛮生长，机器学习的方法已经在向各个行业渗透，而且在很多领域取得了比人类更高的准确率，AI开始真正的走向了人类的生活并参与到人类的行业生产中。</p>
+<h1 id="&#21367;&#31215;&#31070;&#32463;&#32593;&#32476;&#21450;&#20854;&#24212;&#29992;">&#21367;&#31215;&#31070;&#32463;&#32593;&#32476;&#21450;&#20854;&#24212;&#29992;<a class="anchor-link" href="#&#21367;&#31215;&#31070;&#32463;&#32593;&#32476;&#21450;&#20854;&#24212;&#29992;">&#182;</a></h1><p>在<a href="">深度学习简介</a>中已经介绍了深度神经网络的一般结构，以及如何利用梯度下降法来训练一个深度学习的神经网络，在<a href="">深度学习调参技巧</a>中介绍了一些训练一个深度神经网络的一些经验技巧。本篇Note将介绍一个强大而应用广泛的神经网络结构——CNN(卷积神经网络)。</p>
+<p>卷积神经网络的结构在上世纪80年代就提出来了，当时设计出来用于解决数字手写体的识别。卷积神经网络在神经元的结构上做了创新使得网络的参数大大减少，因此整个网络可以设计很深而不会发生Overfitting。那卷积神经网络设计的主要动机是什么呢？</p>
 
 </div>
 </div>
@@ -13183,20 +13125,13 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-What-is-Machine-Learning?">2. What is Machine Learning?<a class="anchor-link" href="#2.-What-is-Machine-Learning?">&#182;</a></h2><p>从字面上来理解，Machine Learning一拆为二，Machine指明了主体是一个Machine，我们可以理解为一个Computer或者是一个程序，Learning说明了这个程序具有学习的功能，能够通过大量数据的输入来自动的学习到这些数据的一些潜在规律或形式，在下次再看到一些新的数据时，可以分辨或认出。</p>
-<p>所以<strong>机器学习</strong>在我看来可以定义为：“Giving Computers the Ability to Learn from Data”。</p>
-<p>常见的学习任务比如：</p>
-<ul>
-<li>语音识别：通过大量语音与对应语言词汇（句子）的学习，机器可以把新输出的语音转换为对应的文本。</li>
-<li>图像识别：机器学习学习大量猫或狗的照片，可以对新的猫或狗的照片进行辨识。</li>
-</ul>
-<p>所以从任务上来看，机器学习就是在找一个Function,这个Function可以根据输出得到一个想要的输出，比如：</p>
-<ul>
-<li>Speech Recognition: f(一段语音信号) = “How are You”</li>
-<li>Image Recognition: f(一张猫的图片) = “Cat”</li>
-<li>Playing Go: f(当前的棋局) = “5-5”（next move）</li>
-<li>Dialogue System: f("Hi") = "Hello"</li>
-</ul>
+<h2 id="1.-CNN&#32467;&#26500;&#35774;&#35745;&#21160;&#26426;">1. CNN&#32467;&#26500;&#35774;&#35745;&#21160;&#26426;<a class="anchor-link" href="#1.-CNN&#32467;&#26500;&#35774;&#35745;&#21160;&#26426;">&#182;</a></h2><p>我们知道在数字手写识别的例子中，输入的图像是一个28×28的矩阵，在一般的神经网络结构中，这样的输入会变展开为一个28×28=784维的向量。这样就造成了图像像素之间空间位置信息的丢失。</p>
+<p>另外一个考虑点是：如果我们把浅层网络都想像（事实上，通过中间层神经元的可视化证明就是如此）为在提取输入图像中的一些局部的结构化的部件（比如数字的笔划），那对于每一个局部的结构只需要输入图片一个局部区域的图像信息就够了，而不需要把整个图像的像素点作为输入。如下图所示：我们在识别下图中的小鸟时，中间的一些神经元的作用是误别鸟嘴，而这个神经元可能只关心输入图像的鸟嘴部分一个局部区域就可以了，不必要关心其他图像部分。这便是CNN中重要的<strong>局部感受野</strong>的概念。</p>
+<p><img src="../images/072_local_cnn.png" alt=""></p>
+<p>另外我们注意到的事，如果我们要对图像中不同位置可能出现的鸟嘴进行检测，我们不需要额外的重新训练一个局部检测器，在另外的位置的检测器的参数和之前位置的参数相同即可。通过这个想法，我们可以让整个图像中所有局部位置对应的神经元具体相同的参数，从而检测相似的纹理或结构，这便是<strong>参数共享</strong>的概念。</p>
+<p><img src="../images/073_same_detector.png" alt=""></p>
+<p>最后我们要介绍的是CNN结构中引入的另外一个很重的layer——Pooling，它的相法也很符合直觉，当我们人眼对图像进行识别时，对于图像的大小相对来说是不敏感的，就像下图中的小鸟的图片，大一些或小一些我们都可以正确的识别，所以在CNN结构设计中，我们不妨把图像subsampling到更小的尺寸，这样就会减少中间层参数的数量。</p>
+<p><img src="../images/074_subsampling.png" alt=""></p>
 
 </div>
 </div>
@@ -13204,17 +13139,8 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Machine-Learning-Framework">3. Machine Learning Framework<a class="anchor-link" href="#3.-Machine-Learning-Framework">&#182;</a></h2><p>那么我们如何使用Machine Learning的方法（模型）来做上面的学习任务呢？简单来说只需要三步，就像把大象放进冰箱这么简单。</p>
-<p><img src="../images/002_three_steps.jpg" alt="three_steps"></p>
-<ul>
-<li>Step1: Define a set of funciton</li>
-<li>Step2: Goodness of function</li>
-<li>Step3: Pick the best function</li>
-</ul>
-<h3 id="3.1-Define-a-set-of-funciton">3.1 Define a set of funciton<a class="anchor-link" href="#3.1-Define-a-set-of-funciton">&#182;</a></h3><p>当我们在根据一个特定的问题设计机器学习算法时，首先第一步就是要想好我们的Function Set，我们需要从function set中挑选适合问题的function。那实际上如何来定义这样的Function Set呢，一般需要一些Domain Knowledge，而且一些概率统计的方法也为我们选择function set提供了指导。</p>
-<p>比如对于房屋价格的预测问题，我们就可以挑选线性函数（$\sum_i x_iw_i$）作为我们的Function set，具体挑选哪一个线性函数呢，那将由第二步和第三步来完成。</p>
-<h3 id="3.2-Goodness-of-function">3.2 Goodness of function<a class="anchor-link" href="#3.2-Goodness-of-function">&#182;</a></h3><p>有了一个Function Set后，我们需要定义一个评价函数，用来说明我们从Function set中选择的function的好坏。那么这个评价函数就是关于我们挑选的模型（function）的函数，到后面就知道了，也就是经过常到的<strong>损失函数</strong>。</p>
-<h3 id="3.3-Pick-the-best-function">3.3 Pick the best function<a class="anchor-link" href="#3.3-Pick-the-best-function">&#182;</a></h3><p>当我们有一个function set并且有了关于function的评价函数后，我们就可以挑选出最好的一个function来作为我们要解决的问题的模型函数了。这里往往是一个最优化的问题。</p>
+<h2 id="2.-CNN&#30340;&#32467;&#26500;">2. CNN&#30340;&#32467;&#26500;<a class="anchor-link" href="#2.-CNN&#30340;&#32467;&#26500;">&#182;</a></h2><p>在上面的几方面动机下，就形成了CNN的基本结构，它与普通神经网络（我们后续称之为全连接网络）相比，引入到卷积层和池化层。其中卷积层使用了局部感野和权值共享的概念，池化层就要是对图像进行降采样。两者都可以大大降低整个网络的参数量。</p>
+<p><img src="../images/075_cnn.png" alt=""></p>
 
 </div>
 </div>
@@ -13222,21 +13148,11 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-Learning-Map">4. Learning Map<a class="anchor-link" href="#4.-Learning-Map">&#182;</a></h2><p><img src="../images/003_learning_map.jpg" alt="LearnigMap"></p>
-<h3 id="4.1-Regession">4.1 Regession<a class="anchor-link" href="#4.1-Regession">&#182;</a></h3><p>回归模型有一个很明显的特点是：它的输出是一个<code>Scalar</code>，比如预测明天的PM2.5。</p>
-<h3 id="4.2-Classification">4.2 Classification<a class="anchor-link" href="#4.2-Classification">&#182;</a></h3><p>分类问题可以分为二分类或多分类问题。</p>
-<p>对于二分类问题，它的输出一般是“是”或“否”，在数学上我们可以用0或1来表示，也可以用-1与+1来表示，到底用什么来表示，其际上对于问题本身是无所谓的，那在实际的机器学习方法中，我们会根据方法的数学表达的方便来选择合适的值。常见的二分类问题比如垃圾邮件的分类、疾病的诊断等。</p>
-<p>对于多分类问题它的输出是一个类别的标签，在数学表达上我们常用的方法是把输出表示为一个长度等于类别数的一个向量$y = [y_1,y_2,\cdots,y_k]$，其中$k$为类别数。对于输出$y$，哪一个分量最大，则代表输入属于哪一类。常见的多分类问题有：图片的分类、新闻的主题归类等。</p>
-<h3 id="4.3-Semi-supervised-Learning">4.3 Semi-supervised Learning<a class="anchor-link" href="#4.3-Semi-supervised-Learning">&#182;</a></h3><p>上面说的回归与分类问题都是属于有监督的学习问题，它的特点是训练数据都是带有标签的。而实际上搜集大量带标签的数据是一件很难的事情。那针对于现实中大量无标准的数据，我们可以采用半监督的学习方法以及无监督的学习方法。</p>
-<p>这里需要区别的是半监督学习与迁移学习的不同。</p>
-<p>半监督学习解决的问题中有标签的数据与无标签数据是有关系的，属于同一类型的问题，比如我们已经有一些猫和狗的带标签照片，如果把大量没带标签的猫和狗的照片用起来，这是半监督学习要考虑的事。而如果我们已经有很多带标签的猫和狗的照片，我们想训练一个模型来识别大像和老虎的图片，那么这就属于迁移学习的范畴了。</p>
-<h3 id="4.4-Transfer-learning">4.4 Transfer learning<a class="anchor-link" href="#4.4-Transfer-learning">&#182;</a></h3><p>迁移学习解决的是利用已有的一些模型，来做一些新的任务，新任务里的数据和之前模型训练用到的数据是不同类的数据，比如之前的模型是一个动物的分类器，而我们想解决在植物数据集上的的分类问题。</p>
-<p>这个方向只所以能work的原因很大是因为，深度学习的浅层网络部分往往学习到的是一些公共的知识。</p>
-<h3 id="4.5-Unsupervised-Learning">4.5 Unsupervised Learning<a class="anchor-link" href="#4.5-Unsupervised-Learning">&#182;</a></h3><p>无监督学习研究如何让机器通过大量没有label的数据，自动的学习到数据与数据之间的差异以及数据背后的一些潜在的结构或分布。比如通过学习大量图片后，机器能否根据一个code(编码后的数据)自动的生成一张逼近真实的照片</p>
-<h3 id="4.6-Structured-Learning">4.6 Structured Learning<a class="anchor-link" href="#4.6-Structured-Learning">&#182;</a></h3><p>Structured learning是分类与回归问题之外的一种机器学习方法，它的学习目标不是输出一个<code>Scalar</code>或者一个类别标签。而是一个带有结构的数据。比如在语音识别中输出是一个句子，在目标检测中，输出的是目标的位置。</p>
-<h3 id="4.7-Reinforcement-Learning">4.7 Reinforcement Learning<a class="anchor-link" href="#4.7-Reinforcement-Learning">&#182;</a></h3><p>强化学习有点像有监督的学习，但两者又有很大的不同。有监督的学习是learn from teacher，而强化学习是learn from critics。强化学习往往是针对一个多步骤的任务，每一步骤并不能得到实时的反馈，只能根据最终整个任务的完成情况或评价结果来得到反馈。</p>
-<p>举例：AlpahGo中同时用到了有监督的学习与强化学习，在刚才始学习如何下棋时，用的是有监督的学习，根据一些棋谱学习每一步之后下一步应该怎么下。当机器具有基本的下棋能力后，再开始根据每一局对弈的结果进行强化学习，通过机器与机器的下棋来产生大量的棋局进行强化学习。</p>
-<p><img src="../images/004_reinforcement_learning.jpg" alt="Reinforcement Learning"></p>
+<h3 id="2.1-&#21367;&#31215;&#23618;&#30340;&#35745;&#31639;&#26041;&#24335;">2.1 &#21367;&#31215;&#23618;&#30340;&#35745;&#31639;&#26041;&#24335;<a class="anchor-link" href="#2.1-&#21367;&#31215;&#23618;&#30340;&#35745;&#31639;&#26041;&#24335;">&#182;</a></h3><p>对于卷积而言，它的输入一般是一个多个通道的二维矩阵组成的一个三维的Tensor，如下图所示，输入是一个3通道的32×32的Tensor。</p>
+<p><img src="../images/076_tensor.png" alt=""></p>
+<p>卷积层有一组卷积Filter（数量不定，可以自己设计），也就是该层的网络参数，每一个Filter都作用于输入的Tensor,输出一个Feature Map。这样的多个Filter对应的输出，就构成了一个多个FeatureMap组成的一个Tensor。</p>
+<p>其中每一个Filter是一个$c\times w\times w$的Tensor，它与输入的Tensor之间进行卷积操作。具体的操作过程是在输入Tensor上逐行扫描，线性加权，计算响应值。下图显示了一个输入为3通道7×7的Tensor和两个3×3×3的Filter进行卷积计算的过程。</p>
+<p><img src="../images/077_conv_process.gif" alt=""></p>
 
 </div>
 </div>
@@ -13244,12 +13160,66 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#24635;&#32467;">&#24635;&#32467;<a class="anchor-link" href="#&#24635;&#32467;">&#182;</a></h2><ul>
-<li>AI、机器学习、深度学习的区别。AI是很早就提出来的一种构想，但早期AI都是基于规则的，其中引入的那个漫画比较搞笑，非常讽刺。后来出现了一些经典的机器学习方法，如感知机、神经网络、SVM、决策树、AdaBoosting等。10年后随着算力和数据的提升，神经网络开始变得work起来，并且包装成了新的名词“深度学习”。</li>
-<li>如何定义机器学习。这个目前没有统一的定义，但合理的说法是：让机器从<strong>数据</strong>中来<strong>学习</strong>，并能做<strong>预测</strong>。</li>
-<li>如何用机器学习来解决问题呢，简单概括为3个步骤: 1) 选择一类模型或方法； 2) 定义损失函数； 3) 优化损失函数。</li>
-<li>最后对机器学习中一些场景、任务类型和学习模型进行了分类。需要特别注意的是半监督学习和迁移学习的区别，以及强化学习和监督学习的区别。</li>
-</ul>
+<h3 id="2.2-&#21367;&#31215;&#23618;&#30340;&#24847;&#20041;">2.2 &#21367;&#31215;&#23618;&#30340;&#24847;&#20041;<a class="anchor-link" href="#2.2-&#21367;&#31215;&#23618;&#30340;&#24847;&#20041;">&#182;</a></h3><p>实际上每一个卷积核都是在检测图像中的每一种纹理，可以把每一个Filter想像为一个模板，它在输入的图像中依次匹配过去，如果图像中的纹理或结构与Filter的结构越相似，则输出的响应值就越高，反之则越低。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.3-&#21367;&#31215;&#23618;&#21442;&#25968;&#35745;&#31639;&#19982;&#36755;&#20837;&#23610;&#23544;&#35745;&#31639;">2.3 &#21367;&#31215;&#23618;&#21442;&#25968;&#35745;&#31639;&#19982;&#36755;&#20837;&#23610;&#23544;&#35745;&#31639;<a class="anchor-link" href="#2.3-&#21367;&#31215;&#23618;&#21442;&#25968;&#35745;&#31639;&#19982;&#36755;&#20837;&#23610;&#23544;&#35745;&#31639;">&#182;</a></h3><p>假设一个卷积层的输入尺寸为$C_1\times H_1 \times W_1$，Filter的尺寸为$C_1\times F\times F$,共有$C_2$个Filter，输入需要经过外括Pading的大小为$P$，而卷积的步长Stride为$S$，则</p>
+<p>该卷积层的参数个数为$C_2\times C_1\times F\times F + C2$（假设有Bias）
+输入的尺寸为：$C_2\times ((H1+2P-F)/S+1)\times ((H1+2P-F)/S+1)$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.4-Pooling&#23618;&#30340;&#36816;&#31639;">2.4 Pooling&#23618;&#30340;&#36816;&#31639;<a class="anchor-link" href="#2.4-Pooling&#23618;&#30340;&#36816;&#31639;">&#182;</a></h3><p>Pooling层的运算逻辑相对于卷积层来说就简单很多了，一般来说我们都是对原输入做0.5倍的降采样，这样原来输入中的一个$2\times 2$大小的区域，就对应了一个输入。
+我们可以有以下几种Pooling的方法：MaxPooling，AvergePooling，NormPooling等。</p>
+<p><img src="../images/079_pooling.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-&#32593;&#32476;&#21040;&#24213;&#23398;&#20064;&#21040;&#20102;&#20160;&#20040;">3. &#32593;&#32476;&#21040;&#24213;&#23398;&#20064;&#21040;&#20102;&#20160;&#20040;<a class="anchor-link" href="#3.-&#32593;&#32476;&#21040;&#24213;&#23398;&#20064;&#21040;&#20102;&#20160;&#20040;">&#182;</a></h2><p>神经网络最大的弊病就是它的不可解释性，像个黑盒子一样，我们往往不知道网络中到底抓住了样本什么特性来识别样本的。</p>
+<p>但是我们仍然可以做一些可视化的尝试，来试图理解网络中到底学习到了什么。</p>
+<p>常见的一种可视化的方法就是对对第一个卷积层的参数进行可视化，由于第一层卷积层与输入层直接相连，它的通道数与图像的通道数相同。下面是AlexNet第一层卷积层的96个Filter的可视化的结果。</p>
+<p><img src="../images/080_filter.png" alt=""></p>
+<p>我们通过观察上面Filter，可以发现，不同的Filter负责检测原图像中不同的纹理结构或颜色。上面的一些Filter在检测图像中各种不同方向的纹理，而下面的一些Filter在检测图像中一些颜色。</p>
+<p>上面的方法只适合分析较浅层的网络层，对于靠近输出层，较层的网络层就不适合用上面的方法进行可视化了。我们可以通过下面的方法来分析不同的输入对我们输出是怎么影响的。</p>
+<p>在我们训练好一个神经网络后，我们把所有的参数固定下来，而随机初始化一些图像作为输入，我们观察不同的图像对中间的一些网络层的影响。尝试通过极大化某一层上某一个神经元的响应值，来观察输入是什么样的。</p>
+<p>我们的优化目标函数是：</p>
+$$x^* = \arg\max_xa^k$$<p>其中$a^k$是中间某一层神经网络第$k$个Feature Map中所有元素的和，$a_k = \sum_w\sum_h a_{w,h}^k$。</p>
+<p>我们甚至可以直接来分析输入层的神经元，看什么样的输入对其中的某个神经元的激活值最大。这个分析尤其有用，在我们做多分类的时候，输入层的第$k$个神经元的激活值越大，则说明样本越大的概率属于第$k$类。</p>
+<p>利用这种思想，我们还可以有其他好玩的应用，比如：DeepStream和DeepStyle。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-Why-Deep?">4. Why Deep?<a class="anchor-link" href="#4.-Why-Deep?">&#182;</a></h2><p>CNN给我们了一个启示：我们可以自己来设计神经网络的结构。但当我们自己去设计网络结构时，参考现在一些主流的网络结构，发现几乎所有的主流的结构都有着很深的结构，像ResNet甚至达到了150层。我们不禁会问，神经网络的结构真的越深越好吗？为什么不设计一个很宽的结构呢。</p>
+<p><img src="../images/081_shadow_vs_deep.png" alt=""></p>
+<p>而且我们知道神经网络中有一个很著名的证明：一个隐藏层的神经网络可以逼近任何函数。那为什么我们不只用一个隐藏层的神经网络，把这一层设计很多个神经元呢。</p>
+<p>通过做一些试验发现，在相同参数的情况下，更深的网络比更宽的网络有更好的识别效果。</p>
+<p><img src="../images/082_shadow_vs_deep.png" alt=""></p>
+<p>实际上更深的网络往往有更好的模块的能力，浅层的网络可以提取一些基本的线条纹理等特征，高层的网络提供了更高的抽象，它们是建立在低层的网络抽象出来的基本结构基础上的。层次越来，这种逐层抽象的能力越强。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-&#24635;&#32467;">5. &#24635;&#32467;<a class="anchor-link" href="#5.-&#24635;&#32467;">&#182;</a></h2><p>本节介绍了一种特殊结构的神经网络——卷积神经网络，它是尤其在处理图片方面有特别强的能力，这和CNN的设计出发点有一定的关系。CNN的两个核心设计特性：１）局部感受野；２）权值共享。这两个特性使得神经网络在处理图像这样的高维输入时参数量控制在一定的规模。然后详细介绍了卷积的计算方式，以及Pooling层的引入。最后我们探讨了一个很本质的问题：CNN到底在学习什么，我们可以通过很多可视化的技术来了解CNN的不同filter在学习什么样的数据pattern。在最后我们讨论了深度学习中的模型为什么都设计的很深，而没有设计的很宽，这是个很有意思的问题，但更多的还是类比的方式，没有严格的数学证明。</p>
 
 </div>
 </div>

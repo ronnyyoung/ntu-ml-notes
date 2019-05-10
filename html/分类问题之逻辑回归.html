@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>机器学习发展与概述</title>
+<title>分类问题之逻辑回归</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,87 +13116,148 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-machine-learning">Introduction to machine learning<a class="anchor-link" href="#Introduction-to-machine-learning">&#182;</a></h1><h2 id="1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">1. AI VS. Machine Learning VS. Deep Learning<a class="anchor-link" href="#1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">&#182;</a></h2>
+<h1 id="&#20998;&#31867;&#38382;&#39064;&#20043;&#36923;&#36753;&#22238;&#24402;">&#20998;&#31867;&#38382;&#39064;&#20043;&#36923;&#36753;&#22238;&#24402;<a class="anchor-link" href="#&#20998;&#31867;&#38382;&#39064;&#20043;&#36923;&#36753;&#22238;&#24402;">&#182;</a></h1><p>在上一讲的笔记的最后，我们用概率生成模型最终到了二分类问题的Function Set为</p>
+$$P(C_1|x) = \sigma(z)$$$$z = w\cdot x+b = \sum_iw_i x_i+b$$$$\sigma(z) = \frac{1}{1+\exp(-z)}$$<p>我们通过下面的方式来判断$x$属于类别$C_1$还是$C_2$：</p>
+$$\begin{cases} P_{w,b}(C_1|x)\ge 0.5 \ \ \text{ class1} \\
+P_{w,b}(C_1|x) &lt; 0.5 \ \ \text{ class2}
+\end{cases}$$<p>所有的$w,b$决定的所有函数构成了我们的Fucntion Set。</p>
+<p>我们可以用以下的图示，把我们的Function Set表示出来：</p>
+<p><img src="../images/043_logistic_regression.jpg" alt="logistic regression"></p>
+<p>我们把上面的Function Set定义的一类模型称为逻辑回归模型（Logistic Regression），虽然带了“回归”字眼，但它却是一个分类模型。</p>
+
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 价值1个亿的AI核心代码</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">input_str</span> <span class="o">==</span> <span class="s2">&quot;quit&quot;</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;吗&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;？&#39;</span><span class="p">,</span> <span class="s1">&#39;！&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">input_str</span><span class="p">)</span>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-&#35780;&#20215;&#27169;&#22411;&#30340;&#22909;&#22351;">1. &#35780;&#20215;&#27169;&#22411;&#30340;&#22909;&#22351;<a class="anchor-link" href="#1.-&#35780;&#20215;&#27169;&#22411;&#30340;&#22909;&#22351;">&#182;</a></h2><p>既然我们已经知道了Funcstion Set的形式，这里我们不再像上个note那样，通过直接对每类数据进行分布参数的求解，而是直接求$w$和$b$。这种方法我们称为<strong>判别式学习算法</strong>。</p>
+<p>对于一个训练集$\{(x^1,C_1),(x^2,C_1),(x^3,C_2),\cdots\}$，我们可以用$\hat{y}=1$或$\hat{y}=0$来表示数据是属于$C1$还是$C_2$。那么我们的训练数据就变成了$\{(x^1,\hat{y}^1),(x^2,\hat{y}^2),(x^3,\hat{y}^3),\cdots\}$</p>
+<p>我们假设所有的训练数据都是从$P(\hat{y} = 1|x)$和$P(\hat{y} = 0|x)=1-P(\hat{y} = 1|x)$两个概率分布产生的，那么我们就可以利用最大似然的方法来求解参数。</p>
+$$L(w,b) = f_{w,b}(x^1)f_{w,b}(x^2)(1-f_{w,b}(x^3))\cdots)$$$$w^*,b^* = \arg\max_{w,b}L(w,b) = \arg\min_{w,b}-L(w,b)$$$$\arg\min_{w,b}-L(w,b) = \arg\min_{w,b}-\ln L(w,b)$$<p>我们可以对上面的式子做以下的推导：</p>
+$$-\ln L(w,b) = -\ln f_{w,b}(x^1) -\ln f_{w,b}(x^2) -\ln(1- f_{w,b}(x^3))\cdots$$<p>由于对于类别1的样本与类别2样本，它们在似然函数中的形式不统一，所以我们进行了如下的变化，让他们的表达式统一：</p>
+$$-\ln L(w,b) = -[\hat{y}^1\cdot \ln f(x^1) + (1-\hat{y}^1)\ln (1-f(x^1))]$$$$-[\hat{y}^2\cdot \ln f(x^2) + (1-\hat{y}^2)\ln (1-f(x^2))]$$$$-[\hat{y}^3\cdot \ln f(x^3) + (1-\hat{y}^3)\ln (1-f(x^3))]-\cdots$$$$=\sum_n-[\hat{y}^n\cdot \ln f(x^n) + (1-\hat{y}^n)\ln (1-f(x^n))]$$<p>而$\hat{y}^n\cdot \ln f(x^n) + (1-\hat{y}^n)\ln (1-f(x^n))$ 实际上就是Bernoullli分布的cross entropy。
+对于分布p：
+$$p(x=1)=\hat{y}^n$$
+$$p(x=0)=1-\hat{y}^n$$
+对于分布q：
+$$q(x=1)=f(x^n)$$
+$$q(x=0)=1-f(x^n)$$</p>
+<p>那么分布p与q的交叉熵为：
+$$H(p,q)=\sum_xp(x)\ln(q(x))$$</p>
+<p><img src="../images/044_cross_entropy.jpg" alt="Cross entropy"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-&#25214;&#21040;&#26368;&#22909;&#30340;&#27169;&#22411;&#21442;&#25968;">2. &#25214;&#21040;&#26368;&#22909;&#30340;&#27169;&#22411;&#21442;&#25968;<a class="anchor-link" href="#2.-&#25214;&#21040;&#26368;&#22909;&#30340;&#27169;&#22411;&#21442;&#25968;">&#182;</a></h2><p>在第二步中，我们最大似然定义了损失函数，这一步我们就利用梯度下降法对损失函数进行最优化求解。关于梯度下降的步骤，我们就不再重复讲解了，我们的优化目标函数是</p>
+$$-\ln L(w,b) = \sum_n-[\hat{y}^n\cdot \ln f(x^n) + (1-\hat{y}^n)\ln (1-f(x^n))]$$$$f(x) = \frac{1}{1+\exp(wx+b)})$$<p>在梯度下降中，我们要求解的是$\frac{\partial -\ln L(w,b)}{\partial w}$和$\frac{\partial -\ln L(w,b)}{\partial b}$</p>
+$$\frac{\partial f(x)}{\partial w_i} = \frac{\partial f(x)}{\partial z}\frac{\partial z}{\partial w_i} = f(x)(1-f(x))\cdot x_i$$$$\frac{\partial -\ln L(w,b)}{\partial w_i} = \sum_n-[\hat{y}^n\frac{1}{f(x^n)}\frac{\partial f(x^n)}{\partial w_i} + (1-\hat{y}^n)\frac{-1}{1- f(x^n)}\frac{\partial f(x^n)}{\partial w_i}]$$$$ = \sum_n[\hat{y}^n(1-f(x))\cdot x_i+(1-\hat{y}^n)(-f(x))\cdot x_i] = \sum_n[(\hat{y}^n - f(x))\cdot x_i]$$$$\frac{\partial -\ln L(w,b)}{\partial b_i} =\sum_n(\hat{y}^n - f(x)) $$<p>从上面推导出来的梯度的结果来看，是非常符合直觉的，$f(x)$与$\hat{y}$之是的差距越大，说明我们的预测值离真实值差距较大，则梯度越大。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-&#22914;&#26524;&#20351;&#29992;&#22343;&#26041;&#35823;&#24046;&#20316;&#20026;&#25439;&#22833;">3. &#22914;&#26524;&#20351;&#29992;&#22343;&#26041;&#35823;&#24046;&#20316;&#20026;&#25439;&#22833;<a class="anchor-link" href="#3.-&#22914;&#26524;&#20351;&#29992;&#22343;&#26041;&#35823;&#24046;&#20316;&#20026;&#25439;&#22833;">&#182;</a></h2><p>很多人包括我自己在学习Logistric Regression的时候都会问题，为什么选择了交叉熵这样的奇怪的损失函数，而没有选择平方损失函数呢</p>
+$$L(w,b) =\sum_n(f_{w,b}(x^n)-\hat{y}^n)^2$$<p>而且在《机器学习》这本书中，介绍神经网络的时候，对于输出层的损失也是用平方损失。</p>
+<p>这一小节，我们来看一下，在logistic中如果用square error会有什么问题。我们不妨对square error的损失函数求一下梯度。</p>
+$$\frac{\partial L(w,b)}{\partial w_i} = \sum_n 2(f_{w,b}(x^b) - \hat{y}^n)\frac{\partial f_{w,b}(x^n)}{\partial w_i} =2(f_{w,b}(x^b) - \hat{y}^n)f_{w,b}(x^n)(1-f_{w,b}(x^n))x_i $$<p>我们看一下当$\hat{y} = 1$而我们的预测结果$f(x)$确很小，接近于0的时候。由于预测值离目标还很远，我们希望有较大的梯度来更快的接近极值点。可是，对于square error的梯度来说，这时整个梯度接近于0。</p>
+<p>通过下面的图像，我们可以对square error的损失函数与cross entropy的损失函数有一个直观的对比。</p>
+<p><img src="../images/045_square_error_surf.jpg" alt="Square error surface"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-&#29983;&#25104;&#27169;&#22411;vs.&#21028;&#26029;&#27169;&#22411;">4. &#29983;&#25104;&#27169;&#22411;vs.&#21028;&#26029;&#27169;&#22411;<a class="anchor-link" href="#4.-&#29983;&#25104;&#27169;&#22411;vs.&#21028;&#26029;&#27169;&#22411;">&#182;</a></h2><p>在前面小节里，提到过Logistic regrssion是一个判别模型，现在回过头让我们看一下，判别模型和生成式模型到底有什么不同。</p>
+<p><img src="../images/046_discriminative.jpg" alt="Generative v.s. Discriminative"></p>
+<p>虽然是相同的训练数据，但是由于我们求$w,b$的方法不同，最终得到的结果也是不一样的。</p>
+<p><img src="../images/047_compare.jpg" alt="Generative v.s. Discriminative"></p>
+<p>举个例子来说明生成式模型与判别式模型在分类问题上的一些差异。一共有13笔training data，其中每个笔data有都两个分量组成，每个分量可能为1或0，共有2个类别。测试数据是一个[1,1]的数据。如下图所示：</p>
+<p><img src="../images/048_data.jpg" alt="Data"></p>
+<p>我们用朴素贝叶斯方法（生成式学习算法）来判断testing data属于哪个类别，我们计算测试数据$x$属于类别1的概率。</p>
+$$P(C_1|x) = \frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1) + P(x|C_2)P(C_2)} &lt; 0.5$$<p>从结果看来，朴素贝叶斯判断我们的测式数据属于类别2,这多少有点违反我们的直觉。因为训练数据中有一个和测试数据一模一样的数据，类别为1。</p>
+<p>怎么解释生成算法出来的这个现象呢：由于贝叶斯算法的的一个假设是每个样本特征的各个维度是彼此独立的。那如果我们重新看训练集中的类别为2的样本的两个分量，就容易发现，基于各分量独立的前提，类别2中是很有可能有[1,1]这种数据的，可能只是我们拿到的training data正好没有而已。</p>
+<p>对于判断式算法和生成式算法一般有如下的结论：</p>
+<ul>
+<li>人们往往会更相信判别模型的效果会更高一些</li>
+<li>但生成式模型有下面的好处：<ul>
+<li>生成式模型都会有一个概率假设前提，这样的话，会只需要少量的数据，而且对噪声更robust。</li>
+<li>我们可以通过不同的数据集，来估计样本的条件独立的每个维度的概率值。</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-Softmax">5. Softmax<a class="anchor-link" href="#5.-Softmax">&#182;</a></h2><p>之前我们讨论的都是二分类的问题，现在我们到多分类问题上面来，对于多分类的问题，对于输入$x$，我们找到最大的$P(C_i|x)$来判断$x$属性哪一类。如何求$P(C_i|x)$呢，我们像二分类一样，把每一类的样本都想像为一个高斯分布$(\mu,\Sigma)$产生的，但每个类的分布是相同的$\Sigma$。用最大似然估计，来求出解$\mu$和$\Sigma$，则</p>
+$$P(C_i|x) = \frac{P(x|C_i)P(C_i)}{\sum^K_n P(x|C_n)P(C_n) }$$<p>最终与二分类类似的推导，我们会得到下面的结果：</p>
+$$z^i = w^i\cdot x+ b$$$$P(C_i|x) = \frac{\exp(z^i)}{\sum^K_n \exp(z^n)}$$<p>其中$w,b$是$\mu,\Sigma$来表示。</p>
+<p>我们用一个实际的数值示例来说明softmax的实际计算过程。</p>
+<p><img src="../images/049_softmax.jpg" alt="Softmax"></p>
+<p>Softmax的数值问题：softmax里出现了指数函数，通过会造成很大的数值，在计算的时候容易出来溢出而不稳定。我们可以使用一些規一化的技巧来避免这个问题。</p>
+$$\frac{\exp(z^i)}{\sum^K_n \exp(z^n)} = \frac{C\cdot \exp(z^i)}{C\cdot\sum^K_n \exp(z^n)} = \frac{\exp(z^i+ \ln C)}{\sum^K_n \exp(z^n+ \ln C)}$$<p>我把C设置为$-\max\{z_i\}$</p>
+<div class="highlight"><pre><span></span><span class="c1"># python 示例，来自CS231n</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">123</span><span class="p">,</span><span class="mi">456</span><span class="p">,</span><span class="mi">789</span><span class="p">])</span><span class="c1"># 例子中有3个分类，每个评分的数值都很大</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="c1"># 不妙：数值问题，可能导致数值爆炸</span>
+<span class="c1"># 那么将f中的值平移到最大值为0：</span>
+<span class="n">f</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="c1"># f becomes [-666, -333, 0]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="c1"># 现在OK了，将给出正确结果</span>
 </pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>在吗？
-在！
-你好
-你好
-能听懂汉语吗？
-能听懂汉语！
-真的吗？
-真的！
-quit
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>AI实际是一个很早就提出来的概念，早在1950年左右，AI概念就已经在全世界流行，虽然那时候计算机也才刚刚问题世。但那个时候的一些AI系统大多都是基于规则的，系统里的逻辑都是人工设定好的逻辑（rule based），而且逻辑都比较简单,这种通过人工手动设计规则的智能是一种伪智能，它永远不可能超过人类，它本身没有任何的free style, 这个时代实际上是人们提出了一种人工智能的愿景，但是没有找到很好的实现AI的方法。</p>
-<p>下面的插图则描绘了当时使用大量<code>hand-craft</code>规则来实现人工智能的尴尬情况。
-<img src="../images/001_ai_inside.jpg" alt="AI Inside"></p>
-<p>1980年左右开始出来了一批以概率统计为基石的机器学习的方法，比如MLP、SVM、Desion Tree等，这些方法使得早期的一些AI概念得到一定的实现。</p>
-<p>到了2010年前后，随着互联网的普及，大量数据产生了，同时计算机的计算能力随着GPU在通用计算上的应用得到大幅度的提升。Deep Learning这个新词汇出现在人们的视野当中，并以星火燎原之势火遍了全球。它实际是算是机器学习中的一种方法，只是因为比较有效，所以流行起来。</p>
-<p>总体来说，50年代的AI实际是一种概念的提出与人们美好的愿景，80年代开始人们找到了机器学习这个手段来实现当初的人工智能的梦想，但受限于方法与计算能力，那个阶段的机器学习方法只在很小的一领域得到了应用。到了21世纪，随着深度学习的野蛮生长，机器学习的方法已经在向各个行业渗透，而且在很多领域取得了比人类更高的准确率，AI开始真正的走向了人类的生活并参与到人类的行业生产中。</p>
-
+<p>由交叉熵的定义，我们定义Softmax的损失函数为</p>
+$$-\sum_n\hat{y}^n\ln y^n$$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-What-is-Machine-Learning?">2. What is Machine Learning?<a class="anchor-link" href="#2.-What-is-Machine-Learning?">&#182;</a></h2><p>从字面上来理解，Machine Learning一拆为二，Machine指明了主体是一个Machine，我们可以理解为一个Computer或者是一个程序，Learning说明了这个程序具有学习的功能，能够通过大量数据的输入来自动的学习到这些数据的一些潜在规律或形式，在下次再看到一些新的数据时，可以分辨或认出。</p>
-<p>所以<strong>机器学习</strong>在我看来可以定义为：“Giving Computers the Ability to Learn from Data”。</p>
-<p>常见的学习任务比如：</p>
-<ul>
-<li>语音识别：通过大量语音与对应语言词汇（句子）的学习，机器可以把新输出的语音转换为对应的文本。</li>
-<li>图像识别：机器学习学习大量猫或狗的照片，可以对新的猫或狗的照片进行辨识。</li>
-</ul>
-<p>所以从任务上来看，机器学习就是在找一个Function,这个Function可以根据输出得到一个想要的输出，比如：</p>
-<ul>
-<li>Speech Recognition: f(一段语音信号) = “How are You”</li>
-<li>Image Recognition: f(一张猫的图片) = “Cat”</li>
-<li>Playing Go: f(当前的棋局) = “5-5”（next move）</li>
-<li>Dialogue System: f("Hi") = "Hello"</li>
-</ul>
+<h2 id="6.-&#29305;&#24449;&#21464;&#25442;">6. &#29305;&#24449;&#21464;&#25442;<a class="anchor-link" href="#6.-&#29305;&#24449;&#21464;&#25442;">&#182;</a></h2><p>通过logistic regression的Function set就知道，它只是一个线性分类器，所以只它能解决 样本是线性可分的问题，如果样本数据线性不可分，那就无能为力了。</p>
+<table>
+<thead><tr>
+<th>x1</th>
+<th>x2</th>
+<th>label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>class2</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>class1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>class1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>class2</td>
+</tr>
+</tbody>
+</table>
+<p>这时候，我们可以先对数据做一些变化，称之为特征变化。</p>
+<p><img src="../images/050_feature_trans.jpg" alt="Feature Trans"></p>
+<p>但是当我们的数据维数很高时，我们很难找到这种特征变化的显式的函数，我们可以通过级联Logitic regression来做这件事。这就是我们后面要讲到的Neural Network。</p>
+<p><img src="../images/051_neural_network.jpg" alt="Neural Network"></p>
 
 </div>
 </div>
@@ -13204,52 +13265,10 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Machine-Learning-Framework">3. Machine Learning Framework<a class="anchor-link" href="#3.-Machine-Learning-Framework">&#182;</a></h2><p>那么我们如何使用Machine Learning的方法（模型）来做上面的学习任务呢？简单来说只需要三步，就像把大象放进冰箱这么简单。</p>
-<p><img src="../images/002_three_steps.jpg" alt="three_steps"></p>
-<ul>
-<li>Step1: Define a set of funciton</li>
-<li>Step2: Goodness of function</li>
-<li>Step3: Pick the best function</li>
-</ul>
-<h3 id="3.1-Define-a-set-of-funciton">3.1 Define a set of funciton<a class="anchor-link" href="#3.1-Define-a-set-of-funciton">&#182;</a></h3><p>当我们在根据一个特定的问题设计机器学习算法时，首先第一步就是要想好我们的Function Set，我们需要从function set中挑选适合问题的function。那实际上如何来定义这样的Function Set呢，一般需要一些Domain Knowledge，而且一些概率统计的方法也为我们选择function set提供了指导。</p>
-<p>比如对于房屋价格的预测问题，我们就可以挑选线性函数（$\sum_i x_iw_i$）作为我们的Function set，具体挑选哪一个线性函数呢，那将由第二步和第三步来完成。</p>
-<h3 id="3.2-Goodness-of-function">3.2 Goodness of function<a class="anchor-link" href="#3.2-Goodness-of-function">&#182;</a></h3><p>有了一个Function Set后，我们需要定义一个评价函数，用来说明我们从Function set中选择的function的好坏。那么这个评价函数就是关于我们挑选的模型（function）的函数，到后面就知道了，也就是经过常到的<strong>损失函数</strong>。</p>
-<h3 id="3.3-Pick-the-best-function">3.3 Pick the best function<a class="anchor-link" href="#3.3-Pick-the-best-function">&#182;</a></h3><p>当我们有一个function set并且有了关于function的评价函数后，我们就可以挑选出最好的一个function来作为我们要解决的问题的模型函数了。这里往往是一个最优化的问题。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-Learning-Map">4. Learning Map<a class="anchor-link" href="#4.-Learning-Map">&#182;</a></h2><p><img src="../images/003_learning_map.jpg" alt="LearnigMap"></p>
-<h3 id="4.1-Regession">4.1 Regession<a class="anchor-link" href="#4.1-Regession">&#182;</a></h3><p>回归模型有一个很明显的特点是：它的输出是一个<code>Scalar</code>，比如预测明天的PM2.5。</p>
-<h3 id="4.2-Classification">4.2 Classification<a class="anchor-link" href="#4.2-Classification">&#182;</a></h3><p>分类问题可以分为二分类或多分类问题。</p>
-<p>对于二分类问题，它的输出一般是“是”或“否”，在数学上我们可以用0或1来表示，也可以用-1与+1来表示，到底用什么来表示，其际上对于问题本身是无所谓的，那在实际的机器学习方法中，我们会根据方法的数学表达的方便来选择合适的值。常见的二分类问题比如垃圾邮件的分类、疾病的诊断等。</p>
-<p>对于多分类问题它的输出是一个类别的标签，在数学表达上我们常用的方法是把输出表示为一个长度等于类别数的一个向量$y = [y_1,y_2,\cdots,y_k]$，其中$k$为类别数。对于输出$y$，哪一个分量最大，则代表输入属于哪一类。常见的多分类问题有：图片的分类、新闻的主题归类等。</p>
-<h3 id="4.3-Semi-supervised-Learning">4.3 Semi-supervised Learning<a class="anchor-link" href="#4.3-Semi-supervised-Learning">&#182;</a></h3><p>上面说的回归与分类问题都是属于有监督的学习问题，它的特点是训练数据都是带有标签的。而实际上搜集大量带标签的数据是一件很难的事情。那针对于现实中大量无标准的数据，我们可以采用半监督的学习方法以及无监督的学习方法。</p>
-<p>这里需要区别的是半监督学习与迁移学习的不同。</p>
-<p>半监督学习解决的问题中有标签的数据与无标签数据是有关系的，属于同一类型的问题，比如我们已经有一些猫和狗的带标签照片，如果把大量没带标签的猫和狗的照片用起来，这是半监督学习要考虑的事。而如果我们已经有很多带标签的猫和狗的照片，我们想训练一个模型来识别大像和老虎的图片，那么这就属于迁移学习的范畴了。</p>
-<h3 id="4.4-Transfer-learning">4.4 Transfer learning<a class="anchor-link" href="#4.4-Transfer-learning">&#182;</a></h3><p>迁移学习解决的是利用已有的一些模型，来做一些新的任务，新任务里的数据和之前模型训练用到的数据是不同类的数据，比如之前的模型是一个动物的分类器，而我们想解决在植物数据集上的的分类问题。</p>
-<p>这个方向只所以能work的原因很大是因为，深度学习的浅层网络部分往往学习到的是一些公共的知识。</p>
-<h3 id="4.5-Unsupervised-Learning">4.5 Unsupervised Learning<a class="anchor-link" href="#4.5-Unsupervised-Learning">&#182;</a></h3><p>无监督学习研究如何让机器通过大量没有label的数据，自动的学习到数据与数据之间的差异以及数据背后的一些潜在的结构或分布。比如通过学习大量图片后，机器能否根据一个code(编码后的数据)自动的生成一张逼近真实的照片</p>
-<h3 id="4.6-Structured-Learning">4.6 Structured Learning<a class="anchor-link" href="#4.6-Structured-Learning">&#182;</a></h3><p>Structured learning是分类与回归问题之外的一种机器学习方法，它的学习目标不是输出一个<code>Scalar</code>或者一个类别标签。而是一个带有结构的数据。比如在语音识别中输出是一个句子，在目标检测中，输出的是目标的位置。</p>
-<h3 id="4.7-Reinforcement-Learning">4.7 Reinforcement Learning<a class="anchor-link" href="#4.7-Reinforcement-Learning">&#182;</a></h3><p>强化学习有点像有监督的学习，但两者又有很大的不同。有监督的学习是learn from teacher，而强化学习是learn from critics。强化学习往往是针对一个多步骤的任务，每一步骤并不能得到实时的反馈，只能根据最终整个任务的完成情况或评价结果来得到反馈。</p>
-<p>举例：AlpahGo中同时用到了有监督的学习与强化学习，在刚才始学习如何下棋时，用的是有监督的学习，根据一些棋谱学习每一步之后下一步应该怎么下。当机器具有基本的下棋能力后，再开始根据每一局对弈的结果进行强化学习，通过机器与机器的下棋来产生大量的棋局进行强化学习。</p>
-<p><img src="../images/004_reinforcement_learning.jpg" alt="Reinforcement Learning"></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#24635;&#32467;">&#24635;&#32467;<a class="anchor-link" href="#&#24635;&#32467;">&#182;</a></h2><ul>
-<li>AI、机器学习、深度学习的区别。AI是很早就提出来的一种构想，但早期AI都是基于规则的，其中引入的那个漫画比较搞笑，非常讽刺。后来出现了一些经典的机器学习方法，如感知机、神经网络、SVM、决策树、AdaBoosting等。10年后随着算力和数据的提升，神经网络开始变得work起来，并且包装成了新的名词“深度学习”。</li>
-<li>如何定义机器学习。这个目前没有统一的定义，但合理的说法是：让机器从<strong>数据</strong>中来<strong>学习</strong>，并能做<strong>预测</strong>。</li>
-<li>如何用机器学习来解决问题呢，简单概括为3个步骤: 1) 选择一类模型或方法； 2) 定义损失函数； 3) 优化损失函数。</li>
-<li>最后对机器学习中一些场景、任务类型和学习模型进行了分类。需要特别注意的是半监督学习和迁移学习的区别，以及强化学习和监督学习的区别。</li>
-</ul>
+<h2 id="7.-&#24635;&#32467;">7. &#24635;&#32467;<a class="anchor-link" href="#7.-&#24635;&#32467;">&#182;</a></h2><p>与前一节概率生成模型不同的是，我们要求$P(C_i|x)$不是通过贝页斯的方法，而是直接找到$P(C_i|x)$的概率形式$P(C_i|x)=\sigma(z) = \frac{1}{1+\exp(-z)} = \frac{1}{1+\exp(-wx-b)}$，通过最大似然法，直接对$w,b$进行求解。</p>
+<p>对分类问题进行最大似然法求$w,b$，实际上转换为以交叉熵为损失函数的优化问题。这里顺便介绍了为什么分类模型不能使用均方误差，其实最主要原因还是对目标的分布假设不同，分类问题输出值是一个伯努力分布。</p>
+<p>当我们把二分类问题扩展到多分类问题上是Logistic Regression模型就变成了Softmax的表达形式。对于Softmax来说，它的损失函数也是交叉熵。</p>
+<p>本节最后介绍了线性模型的局限性，不能解决复杂的非线性问题，所以引入了<code>Feature Transformation</code>这样的中间表达层，也就引出了神经网络的结构。</p>
 
 </div>
 </div>

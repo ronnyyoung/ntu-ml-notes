@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>机器学习发展与概述</title>
+<title>深度学习的调试技巧</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,66 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-machine-learning">Introduction to machine learning<a class="anchor-link" href="#Introduction-to-machine-learning">&#182;</a></h1><h2 id="1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">1. AI VS. Machine Learning VS. Deep Learning<a class="anchor-link" href="#1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 价值1个亿的AI核心代码</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">input_str</span> <span class="o">==</span> <span class="s2">&quot;quit&quot;</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;吗&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;？&#39;</span><span class="p">,</span> <span class="s1">&#39;！&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">input_str</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>在吗？
-在！
-你好
-你好
-能听懂汉语吗？
-能听懂汉语！
-真的吗？
-真的！
-quit
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>AI实际是一个很早就提出来的概念，早在1950年左右，AI概念就已经在全世界流行，虽然那时候计算机也才刚刚问题世。但那个时候的一些AI系统大多都是基于规则的，系统里的逻辑都是人工设定好的逻辑（rule based），而且逻辑都比较简单,这种通过人工手动设计规则的智能是一种伪智能，它永远不可能超过人类，它本身没有任何的free style, 这个时代实际上是人们提出了一种人工智能的愿景，但是没有找到很好的实现AI的方法。</p>
-<p>下面的插图则描绘了当时使用大量<code>hand-craft</code>规则来实现人工智能的尴尬情况。
-<img src="../images/001_ai_inside.jpg" alt="AI Inside"></p>
-<p>1980年左右开始出来了一批以概率统计为基石的机器学习的方法，比如MLP、SVM、Desion Tree等，这些方法使得早期的一些AI概念得到一定的实现。</p>
-<p>到了2010年前后，随着互联网的普及，大量数据产生了，同时计算机的计算能力随着GPU在通用计算上的应用得到大幅度的提升。Deep Learning这个新词汇出现在人们的视野当中，并以星火燎原之势火遍了全球。它实际是算是机器学习中的一种方法，只是因为比较有效，所以流行起来。</p>
-<p>总体来说，50年代的AI实际是一种概念的提出与人们美好的愿景，80年代开始人们找到了机器学习这个手段来实现当初的人工智能的梦想，但受限于方法与计算能力，那个阶段的机器学习方法只在很小的一领域得到了应用。到了21世纪，随着深度学习的野蛮生长，机器学习的方法已经在向各个行业渗透，而且在很多领域取得了比人类更高的准确率，AI开始真正的走向了人类的生活并参与到人类的行业生产中。</p>
+<h1 id="&#28145;&#24230;&#23398;&#20064;&#30340;&#35843;&#35797;&#25216;&#24039;">&#28145;&#24230;&#23398;&#20064;&#30340;&#35843;&#35797;&#25216;&#24039;<a class="anchor-link" href="#&#28145;&#24230;&#23398;&#20064;&#30340;&#35843;&#35797;&#25216;&#24039;">&#182;</a></h1><p>上个小节中介绍了深度学习的基本概念和用反向传播来求解参数梯度的方法，我们知道了深度学习就是在原来神经网络的基础上有了更深的结构，那更深的结构带来了更多的问题。我们在训练一个深度神经网络的时候，不是那么容易就可以得到理想的结果，里面有很多工程技巧与调参经验。</p>
 
 </div>
 </div>
@@ -13183,20 +13124,15 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-What-is-Machine-Learning?">2. What is Machine Learning?<a class="anchor-link" href="#2.-What-is-Machine-Learning?">&#182;</a></h2><p>从字面上来理解，Machine Learning一拆为二，Machine指明了主体是一个Machine，我们可以理解为一个Computer或者是一个程序，Learning说明了这个程序具有学习的功能，能够通过大量数据的输入来自动的学习到这些数据的一些潜在规律或形式，在下次再看到一些新的数据时，可以分辨或认出。</p>
-<p>所以<strong>机器学习</strong>在我看来可以定义为：“Giving Computers the Ability to Learn from Data”。</p>
-<p>常见的学习任务比如：</p>
-<ul>
-<li>语音识别：通过大量语音与对应语言词汇（句子）的学习，机器可以把新输出的语音转换为对应的文本。</li>
-<li>图像识别：机器学习学习大量猫或狗的照片，可以对新的猫或狗的照片进行辨识。</li>
-</ul>
-<p>所以从任务上来看，机器学习就是在找一个Function,这个Function可以根据输出得到一个想要的输出，比如：</p>
-<ul>
-<li>Speech Recognition: f(一段语音信号) = “How are You”</li>
-<li>Image Recognition: f(一张猫的图片) = “Cat”</li>
-<li>Playing Go: f(当前的棋局) = “5-5”（next move）</li>
-<li>Dialogue System: f("Hi") = "Hello"</li>
-</ul>
+<h2 id="1.-&#25351;&#23548;&#21407;&#21017;">1. &#25351;&#23548;&#21407;&#21017;<a class="anchor-link" href="#1.-&#25351;&#23548;&#21407;&#21017;">&#182;</a></h2><p>当我们训练好一个深度学习的网络后，我们往往会通过看它在测试数据集上的表现来判断我们模型的效果。这里经常容易犯的一个错误就是，当我们看到模型在测试数据集上表现不好时，就判断我们的模型过拟合了，然后去搜集更多的数据或加一些正则化的方法。这个思路是错的！</p>
+<p>神经网络不像SVM、Decision Tree那样，容易在Traning Set上得到一个很好的结果，我们初次训练出来的神经网络往往在训练集上就得不到一个很好的准确率，那在测试数据集上可想而知。所以当我们训练出来的神经网络效果不好时，首先要看在训练集上的准确率，如果训练集上的效果很好，再看测试集（验证集）上的准确率。</p>
+<p>还有一点与直觉相悖的是：**复杂的模型不见得就一定会比简单的模型训练出来的training error更小，层数多、复杂的模型有更多的参数，更容易陷入局部极值点。这和过拟合是没有关系的。</p>
+<p>接下来我们将针对两种问题来提出一些解决方法：</p>
+<ol>
+<li>训练集上准确度不够，模型不能很好的学习到参数。</li>
+<li>训练集上效果好，但测试集上效果不好，模型过拟合了。</li>
+</ol>
+<p><img src="../images/059_recipe.jpg" alt="DL Recipe"></p>
 
 </div>
 </div>
@@ -13204,17 +13140,14 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Machine-Learning-Framework">3. Machine Learning Framework<a class="anchor-link" href="#3.-Machine-Learning-Framework">&#182;</a></h2><p>那么我们如何使用Machine Learning的方法（模型）来做上面的学习任务呢？简单来说只需要三步，就像把大象放进冰箱这么简单。</p>
-<p><img src="../images/002_three_steps.jpg" alt="three_steps"></p>
-<ul>
-<li>Step1: Define a set of funciton</li>
-<li>Step2: Goodness of function</li>
-<li>Step3: Pick the best function</li>
-</ul>
-<h3 id="3.1-Define-a-set-of-funciton">3.1 Define a set of funciton<a class="anchor-link" href="#3.1-Define-a-set-of-funciton">&#182;</a></h3><p>当我们在根据一个特定的问题设计机器学习算法时，首先第一步就是要想好我们的Function Set，我们需要从function set中挑选适合问题的function。那实际上如何来定义这样的Function Set呢，一般需要一些Domain Knowledge，而且一些概率统计的方法也为我们选择function set提供了指导。</p>
-<p>比如对于房屋价格的预测问题，我们就可以挑选线性函数（$\sum_i x_iw_i$）作为我们的Function set，具体挑选哪一个线性函数呢，那将由第二步和第三步来完成。</p>
-<h3 id="3.2-Goodness-of-function">3.2 Goodness of function<a class="anchor-link" href="#3.2-Goodness-of-function">&#182;</a></h3><p>有了一个Function Set后，我们需要定义一个评价函数，用来说明我们从Function set中选择的function的好坏。那么这个评价函数就是关于我们挑选的模型（function）的函数，到后面就知道了，也就是经过常到的<strong>损失函数</strong>。</p>
-<h3 id="3.3-Pick-the-best-function">3.3 Pick the best function<a class="anchor-link" href="#3.3-Pick-the-best-function">&#182;</a></h3><p>当我们有一个function set并且有了关于function的评价函数后，我们就可以挑选出最好的一个function来作为我们要解决的问题的模型函数了。这里往往是一个最优化的问题。</p>
+<h2 id="2.-&#31070;&#32463;&#32593;&#32476;&#35757;&#32451;&#30340;&#26799;&#24230;&#28040;&#22833;&#38382;&#39064;">2. &#31070;&#32463;&#32593;&#32476;&#35757;&#32451;&#30340;&#26799;&#24230;&#28040;&#22833;&#38382;&#39064;<a class="anchor-link" href="#2.-&#31070;&#32463;&#32593;&#32476;&#35757;&#32451;&#30340;&#26799;&#24230;&#28040;&#22833;&#38382;&#39064;">&#182;</a></h2><p>在训练手写数字识别的神网络的时候，随着网络层数的加深，当大于3层后，我们并没有得到效果的显著提升，反而有下降的情况，当我们进一步把网络增大到8层以后，准确度迅速下降。这是为什么呢，为什么更深更强大的网络结构没能取得更好的效果呢。</p>
+<p><img src="../images/060_vanishing_gradient.jpg" alt="Vanishing Gradient"></p>
+<p>我们先从直觉上进行解释，我们上一个Note中介绍到我们神经网络的激活函数为Sigmoid函数，我们通过下图可以发现Sigmoid函数有个特点，在$z$很大或很小的时候，这时候$z$的一个很大的变化只会引起$\sigma(z)$很小的变化。所以在网络饱和时（每个神经元的输出值接近到1或-1时），靠近输入层的一个参数$w$的一个较大的变化$\Delta w$，经过网络层层传播后，只能引起输出值很小的一个变化。也就是说这时候$\frac{\partial L}{\partial w}$很小。</p>
+<p><img src="../images/061_small_gradient.jpg" alt="Small Gradient"></p>
+<p>这就带来了一个问题：越靠近网络输出的地方，参数的梯度往往变化很快，学习的很快，而靠近网络输入层的参数则得到的梯度值很小，学习的很慢，所以在很长的一段时间，靠近网络输入层的地方由于参数学习的很慢还接近于随机机，产生的神经元输出也是趋于随机。 但靠近输出层的部分对这些随机值产生了收敛，最终导致整个网络都不work了。</p>
+<p>下面是一些原理上的解决为什么会出现梯度消失：</p>
+<p>根据反射传播我们知道，对于中间层的一个神经元，它的输入为$x$，参数为$w, b$，$z = w\cdot x + b$, 输出output为$a = \sigma(z)$</p>
+$$\frac{\partial L}{\partial w} = \frac{\partial L}{\partial z}\frac{\partial z}{\partial w} = \frac{\partial L}{\partial a}\frac{\partial a}{\partial z}\frac{\partial z}{\partial w} = \frac{\partial L}{\partial a}\sigma(z)(1-\sigma(z))x$$<p>我们可以看到后一层的梯度$\frac{\partial L}{\partial z'}$在向后传播时，剩上了系数$\sigma(z)(1-\sigma(z)x$，由于$\sigma(z) &lt; 1$，所以$\sigma(z)(1-\sigma(z))\le \frac{1}{4}$，而$x$值因为$w$的初始化都很小，所以也接近于0。 从上面可以看出梯度在向后传播时是越来越小的。</p>
 
 </div>
 </div>
@@ -13222,21 +13155,20 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-Learning-Map">4. Learning Map<a class="anchor-link" href="#4.-Learning-Map">&#182;</a></h2><p><img src="../images/003_learning_map.jpg" alt="LearnigMap"></p>
-<h3 id="4.1-Regession">4.1 Regession<a class="anchor-link" href="#4.1-Regession">&#182;</a></h3><p>回归模型有一个很明显的特点是：它的输出是一个<code>Scalar</code>，比如预测明天的PM2.5。</p>
-<h3 id="4.2-Classification">4.2 Classification<a class="anchor-link" href="#4.2-Classification">&#182;</a></h3><p>分类问题可以分为二分类或多分类问题。</p>
-<p>对于二分类问题，它的输出一般是“是”或“否”，在数学上我们可以用0或1来表示，也可以用-1与+1来表示，到底用什么来表示，其际上对于问题本身是无所谓的，那在实际的机器学习方法中，我们会根据方法的数学表达的方便来选择合适的值。常见的二分类问题比如垃圾邮件的分类、疾病的诊断等。</p>
-<p>对于多分类问题它的输出是一个类别的标签，在数学表达上我们常用的方法是把输出表示为一个长度等于类别数的一个向量$y = [y_1,y_2,\cdots,y_k]$，其中$k$为类别数。对于输出$y$，哪一个分量最大，则代表输入属于哪一类。常见的多分类问题有：图片的分类、新闻的主题归类等。</p>
-<h3 id="4.3-Semi-supervised-Learning">4.3 Semi-supervised Learning<a class="anchor-link" href="#4.3-Semi-supervised-Learning">&#182;</a></h3><p>上面说的回归与分类问题都是属于有监督的学习问题，它的特点是训练数据都是带有标签的。而实际上搜集大量带标签的数据是一件很难的事情。那针对于现实中大量无标准的数据，我们可以采用半监督的学习方法以及无监督的学习方法。</p>
-<p>这里需要区别的是半监督学习与迁移学习的不同。</p>
-<p>半监督学习解决的问题中有标签的数据与无标签数据是有关系的，属于同一类型的问题，比如我们已经有一些猫和狗的带标签照片，如果把大量没带标签的猫和狗的照片用起来，这是半监督学习要考虑的事。而如果我们已经有很多带标签的猫和狗的照片，我们想训练一个模型来识别大像和老虎的图片，那么这就属于迁移学习的范畴了。</p>
-<h3 id="4.4-Transfer-learning">4.4 Transfer learning<a class="anchor-link" href="#4.4-Transfer-learning">&#182;</a></h3><p>迁移学习解决的是利用已有的一些模型，来做一些新的任务，新任务里的数据和之前模型训练用到的数据是不同类的数据，比如之前的模型是一个动物的分类器，而我们想解决在植物数据集上的的分类问题。</p>
-<p>这个方向只所以能work的原因很大是因为，深度学习的浅层网络部分往往学习到的是一些公共的知识。</p>
-<h3 id="4.5-Unsupervised-Learning">4.5 Unsupervised Learning<a class="anchor-link" href="#4.5-Unsupervised-Learning">&#182;</a></h3><p>无监督学习研究如何让机器通过大量没有label的数据，自动的学习到数据与数据之间的差异以及数据背后的一些潜在的结构或分布。比如通过学习大量图片后，机器能否根据一个code(编码后的数据)自动的生成一张逼近真实的照片</p>
-<h3 id="4.6-Structured-Learning">4.6 Structured Learning<a class="anchor-link" href="#4.6-Structured-Learning">&#182;</a></h3><p>Structured learning是分类与回归问题之外的一种机器学习方法，它的学习目标不是输出一个<code>Scalar</code>或者一个类别标签。而是一个带有结构的数据。比如在语音识别中输出是一个句子，在目标检测中，输出的是目标的位置。</p>
-<h3 id="4.7-Reinforcement-Learning">4.7 Reinforcement Learning<a class="anchor-link" href="#4.7-Reinforcement-Learning">&#182;</a></h3><p>强化学习有点像有监督的学习，但两者又有很大的不同。有监督的学习是learn from teacher，而强化学习是learn from critics。强化学习往往是针对一个多步骤的任务，每一步骤并不能得到实时的反馈，只能根据最终整个任务的完成情况或评价结果来得到反馈。</p>
-<p>举例：AlpahGo中同时用到了有监督的学习与强化学习，在刚才始学习如何下棋时，用的是有监督的学习，根据一些棋谱学习每一步之后下一步应该怎么下。当机器具有基本的下棋能力后，再开始根据每一局对弈的结果进行强化学习，通过机器与机器的下棋来产生大量的棋局进行强化学习。</p>
-<p><img src="../images/004_reinforcement_learning.jpg" alt="Reinforcement Learning"></p>
+<h2 id="3.-&#28608;&#27963;&#20989;&#25968;&#20043;RELU">3. &#28608;&#27963;&#20989;&#25968;&#20043;RELU<a class="anchor-link" href="#3.-&#28608;&#27963;&#20989;&#25968;&#20043;RELU">&#182;</a></h2><p>ReLU(rectified linear unit)是一种新的激活函数，它的提出就是为了解决Sigmoid函数存在梯度消失的问题。它的数学表达式为：</p>
+$$a = \max\{0, z\}$$<p>使用ReLU作为激活函数有以下4个优点：</p>
+<ol>
+<li>Fast to compute</li>
+<li>Biological reason</li>
+<li>Infinite sigmoid with different biases (看以看成多个Sigmoid叠加的结果)</li>
+<li>solve Vanishing gradinet problem</li>
+</ol>
+<p>ReLU在实际动作时，对于每个神经元来说，如果它的输入大于0,则输出等于输入，否则为0。那整个网络就变得像下面这张图所示：</p>
+<p><img src="../images/062_relu.jpg" alt="RELU"></p>
+<p>如果我们把所有响应值为0的神经元都删除掉，就变成了下面这个像子</p>
+<p><img src="../images/063_linear_relu.jpg" alt="RELU"></p>
+<p>有些人会有一些疑问，如果看上面这张图，那整个神经元不就变成一个线性的结构了吗？是的，当上图的状态时，如果输入变化很小，不足以引起神经元激活值由大于0变为小于0或由小于0变为大于0,那么整个网络就是一个线性结构。但随着输入$x$的持续变化，网络结构就会随之变化。整体看来整个网络结构是一个非线性的结构。</p>
+<p>随着深度学习技术的发展，这些年陆续又提出了多种的激活函数如PReLU和Maxout。它们的思想都是在激活函数里引入了可以学习的参数，让网络自己来决定激活函数的样子。</p>
 
 </div>
 </div>
@@ -13244,12 +13176,61 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#24635;&#32467;">&#24635;&#32467;<a class="anchor-link" href="#&#24635;&#32467;">&#182;</a></h2><ul>
-<li>AI、机器学习、深度学习的区别。AI是很早就提出来的一种构想，但早期AI都是基于规则的，其中引入的那个漫画比较搞笑，非常讽刺。后来出现了一些经典的机器学习方法，如感知机、神经网络、SVM、决策树、AdaBoosting等。10年后随着算力和数据的提升，神经网络开始变得work起来，并且包装成了新的名词“深度学习”。</li>
-<li>如何定义机器学习。这个目前没有统一的定义，但合理的说法是：让机器从<strong>数据</strong>中来<strong>学习</strong>，并能做<strong>预测</strong>。</li>
-<li>如何用机器学习来解决问题呢，简单概括为3个步骤: 1) 选择一类模型或方法； 2) 定义损失函数； 3) 优化损失函数。</li>
-<li>最后对机器学习中一些场景、任务类型和学习模型进行了分类。需要特别注意的是半监督学习和迁移学习的区别，以及强化学习和监督学习的区别。</li>
-</ul>
+<h2 id="4.-&#35843;&#25972;&#23398;&#20064;&#29575;">4. &#35843;&#25972;&#23398;&#20064;&#29575;<a class="anchor-link" href="#4.-&#35843;&#25972;&#23398;&#20064;&#29575;">&#182;</a></h2><p>关于训练神经网络另外一个重要的话题就是关于学习率的调整，从Effective Gradinet那一节中我们已经介绍了一种自适应的参数调整策略，并对不同的参数有不同的学习率。从而解决梯度大降在寻找极值点时收敛速度慢的问题。这里我们再介绍一种新的方法Moment的方法，它的灵感来自于物理运动动量的思想，它有利于我们的网络在梯度下降时越过局部极值点，进而找到最佳的极值点。</p>
+<p><img src="../images/064_moment.jpg" alt="Moment"></p>
+<p>在小球经过鞍点或局部极值点时，由于惯性任然有较大向右的速度，而不会因为没有了加速度而停下来。回到我们梯度下降中来，我们在鞍点与局部极植点时由于梯度为0，所以参数就不再更新了。为了解决这个问题，我们为参数更新引入到动量。</p>
+<p><img src="../images/065_local_minimal.jpg" alt="Moment"></p>
+<p>每次参数更新方法是梯度方向与上一次更新的梯度方向之合。</p>
+<p><img src="../images/066_moment_gradient.jpg" alt="Moment Gradinet"></p>
+<p>如果把上面讲的Moment方法与之前介绍的AdaGrad的方法结合在一起，就形成了Adam的方法。</p>
+<p><img src="../images/067_adam.jpg" alt="Adam"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-Early-Stopping">5. Early Stopping<a class="anchor-link" href="#5.-Early-Stopping">&#182;</a></h2><p>early stopping是一种防止过拟合的方法，它的基本思想就是根据训练过程中的损失曲线，选择在一个training erro与 validation set都较底的时候，停止训练，防止模型在进一步的训练中过拟合。</p>
+<p><img src="../images/068_early_stopping.jpg" alt="early stopping"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="6.-Regularization">6. Regularization<a class="anchor-link" href="#6.-Regularization">&#182;</a></h2><p>正则化是我们在介绍Regression中就介绍到的技术，用来防止模型过拟合，那针对于神经网络模型来说，我们同样可以选择该方法来防止模型过拟合，常见的有L1正则与L2正则化。它们分别对应的损失函数是：</p>
+$$\text{L1}: L'(\theta) = L(\theta) + \lambda\|\theta\|_1$$$$\text{L2}: L'(\theta) = L(\theta) + \frac{1}{2}\lambda\|\theta\|_2$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="7.-Dropout">7. Dropout<a class="anchor-link" href="#7.-Dropout">&#182;</a></h2><p>Dropout是一种十分有效的防止模型过拟合的方法，它的操作方法是在以一个miniBatch的数据对模型训练的时候，让每个神经元以一个概率$p$随机的不产生响应。同时，在反向传播时，也不对该神经元的参数进行更新。</p>
+<p><img src="../images/069_dropout.jpg" alt="dropout"></p>
+<p>也就是说每次miniBatch的训练的神经网络的结构因为dropout的随机性，都是不同的。</p>
+<p><img src="../images/070_thinner_network.jpg" alt="thinner network"></p>
+<p>值得注意的是在Testing阶段时，为了保证输出结果的一致性，并不进行dropout。但这就存在一个问题：网络中的参数是在有dropout的情况下训练的。如果testing不进行dropout，那神经元接收到的输入就会变多，相应的输出相比训练时就会变大，那整个网络的输出就不对了。所以为了解决这个问题，一般的处理方法是在训练的时候，每个神经元的输出最终会再乘以$1/(1-p)$。这样在testing的时候就不需要做任何操作了。</p>
+<p>以Ensemble的角度来看Dropout的作用。每个一MinihBatch都相当于以权重共享的方式训练出了一个神经网络，最终网络的输出是多们网络加权后的结果。</p>
+<p><img src="../images/071_ensemble.jpg" alt="Ensemble"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="8.-BatchNorm">8. BatchNorm<a class="anchor-link" href="#8.-BatchNorm">&#182;</a></h2><p>这部分是课程没有讲到的地方，但我觉得也是设计或训练一个DNN中常用的方法之一。以后有时间再来填坑。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="9.-&#24635;&#32467;">9. &#24635;&#32467;<a class="anchor-link" href="#9.-&#24635;&#32467;">&#182;</a></h2><p>这一个Note主要介绍了在训练一个神经网络时会遇到的问题，以及解决的方法。当一个网络训练完成后，我们要先检测训练集上的准确率，如果在训练集上的准确率不高的话，我们可能需要调整模型、选择更好的参数更新方法、选择合适的激活函数来解决。进一步再看模型在训练集上的准确率，考虑使用early stopping, regularization以及dropout等防止过拟合的方法。</p>
 
 </div>
 </div>

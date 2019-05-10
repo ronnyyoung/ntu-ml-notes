@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>机器学习发展与概述</title>
+<title>分类问题之概率生成模型</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,66 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-machine-learning">Introduction to machine learning<a class="anchor-link" href="#Introduction-to-machine-learning">&#182;</a></h1><h2 id="1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">1. AI VS. Machine Learning VS. Deep Learning<a class="anchor-link" href="#1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 价值1个亿的AI核心代码</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">input_str</span> <span class="o">==</span> <span class="s2">&quot;quit&quot;</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;吗&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;？&#39;</span><span class="p">,</span> <span class="s1">&#39;！&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">input_str</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>在吗？
-在！
-你好
-你好
-能听懂汉语吗？
-能听懂汉语！
-真的吗？
-真的！
-quit
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>AI实际是一个很早就提出来的概念，早在1950年左右，AI概念就已经在全世界流行，虽然那时候计算机也才刚刚问题世。但那个时候的一些AI系统大多都是基于规则的，系统里的逻辑都是人工设定好的逻辑（rule based），而且逻辑都比较简单,这种通过人工手动设计规则的智能是一种伪智能，它永远不可能超过人类，它本身没有任何的free style, 这个时代实际上是人们提出了一种人工智能的愿景，但是没有找到很好的实现AI的方法。</p>
-<p>下面的插图则描绘了当时使用大量<code>hand-craft</code>规则来实现人工智能的尴尬情况。
-<img src="../images/001_ai_inside.jpg" alt="AI Inside"></p>
-<p>1980年左右开始出来了一批以概率统计为基石的机器学习的方法，比如MLP、SVM、Desion Tree等，这些方法使得早期的一些AI概念得到一定的实现。</p>
-<p>到了2010年前后，随着互联网的普及，大量数据产生了，同时计算机的计算能力随着GPU在通用计算上的应用得到大幅度的提升。Deep Learning这个新词汇出现在人们的视野当中，并以星火燎原之势火遍了全球。它实际是算是机器学习中的一种方法，只是因为比较有效，所以流行起来。</p>
-<p>总体来说，50年代的AI实际是一种概念的提出与人们美好的愿景，80年代开始人们找到了机器学习这个手段来实现当初的人工智能的梦想，但受限于方法与计算能力，那个阶段的机器学习方法只在很小的一领域得到了应用。到了21世纪，随着深度学习的野蛮生长，机器学习的方法已经在向各个行业渗透，而且在很多领域取得了比人类更高的准确率，AI开始真正的走向了人类的生活并参与到人类的行业生产中。</p>
+<h1 id="&#20998;&#31867;&#38382;&#39064;&#20043;&#27010;&#29575;&#29983;&#25104;&#27169;&#22411;">&#20998;&#31867;&#38382;&#39064;&#20043;&#27010;&#29575;&#29983;&#25104;&#27169;&#22411;<a class="anchor-link" href="#&#20998;&#31867;&#38382;&#39064;&#20043;&#27010;&#29575;&#29983;&#25104;&#27169;&#22411;">&#182;</a></h1><p>在之前的笔记已经介绍了回归问题，并介绍了用机器学习问题的解决框架来解决宝可梦进化后CP值的回归问题。这篇笔记将介绍机器学习中另一个很重要的TASK：分类。</p>
 
 </div>
 </div>
@@ -13183,20 +13124,54 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-What-is-Machine-Learning?">2. What is Machine Learning?<a class="anchor-link" href="#2.-What-is-Machine-Learning?">&#182;</a></h2><p>从字面上来理解，Machine Learning一拆为二，Machine指明了主体是一个Machine，我们可以理解为一个Computer或者是一个程序，Learning说明了这个程序具有学习的功能，能够通过大量数据的输入来自动的学习到这些数据的一些潜在规律或形式，在下次再看到一些新的数据时，可以分辨或认出。</p>
-<p>所以<strong>机器学习</strong>在我看来可以定义为：“Giving Computers the Ability to Learn from Data”。</p>
-<p>常见的学习任务比如：</p>
+<h2 id="1.-&#20998;&#31867;&#38382;&#39064;">1. &#20998;&#31867;&#38382;&#39064;<a class="anchor-link" href="#1.-&#20998;&#31867;&#38382;&#39064;">&#182;</a></h2><p>在机器学习介绍的那篇笔记中已经大概介绍了分类问题的特点，与回归问题相比，它的输出是一个类别标签。分类问题在现实中也是很常见的问题，例如：</p>
 <ul>
-<li>语音识别：通过大量语音与对应语言词汇（句子）的学习，机器可以把新输出的语音转换为对应的文本。</li>
-<li>图像识别：机器学习学习大量猫或狗的照片，可以对新的猫或狗的照片进行辨识。</li>
+<li>贷款信用判定<ul>
+<li>输入：一个人的收入、存款、职业、年龄、过去的财务状态等信息</li>
+<li>输出：是否接入贷款申请</li>
 </ul>
-<p>所以从任务上来看，机器学习就是在找一个Function,这个Function可以根据输出得到一个想要的输出，比如：</p>
-<ul>
-<li>Speech Recognition: f(一段语音信号) = “How are You”</li>
-<li>Image Recognition: f(一张猫的图片) = “Cat”</li>
-<li>Playing Go: f(当前的棋局) = “5-5”（next move）</li>
-<li>Dialogue System: f("Hi") = "Hello"</li>
+</li>
+<li>医学诊断<ul>
+<li>输入：病症、年龄、性别、病史等</li>
+<li>输出：哪一种疾病</li>
 </ul>
+</li>
+<li>手写字符识别<ul>
+<li>输入：手写字符的图片数据</li>
+<li>输出：哪一个字符</li>
+</ul>
+</li>
+<li>图片识别<ul>
+<li>输入：图片数据</li>
+<li>输出：图片中的事物属于哪一个类别</li>
+</ul>
+</li>
+</ul>
+<p>还是让我们用宝可梦的问题来作为本节课程的一个实例！在本节中我们将通过研究宝可梦属性的分类问题来介绍如何用概率生成模型求解分类问题。</p>
+<p><img src="../images/035_pokemon_classification.jpg" alt="Pokemon Classification"></p>
+<p>我们已知的每一种宝可梦都有一个属性类别：水系、火系、草系、正常等等。那我们如何根据一个宝可梦的一些战斗特点来判断一个宝可梦的属性呢？</p>
+<p>首先我们需要先将每一个宝可梦的战斗属性抽象成一个特征向量，用这个特征向量来表示这个宝可梦的输入。比如[HP,Attack,Defencse,SP Atk, SP Def, Speed]用这6个战斗属性就可表示了一只宝可梦，我们根据这些战斗属性值来判断每只宝可梦属于哪一个类别。</p>
+<p>其次，我们需要有很多的宝可梦的战斗属性值数据和它对应的种类作为我们的训练数据集。</p>
+<p><img src="../images/036_pokemon.jpg" alt="Pokemon"></p>
+<p>我们先思考，能不能像之前做回归那样呢，我们把宝可梦的类别$\hat{y}$用一个数字来表示，比如有2个类别的宝可梦，我们分别用$+1, -1$来表示。然后我们去找一个线性回归的Model:$y = w\cdot x + b$，让y来逼近$+1$或$-1$。如果一只宝可梦的输出的结果$y$接近于-1就属于第一类，反之则属于第二类。</p>
+<p>如果我们按回归的方式去求解一个分类问题，会遇到一个问题，就是当某一个类别中出现了一些离群点时，就造成这个类别分类效果很差。如下图所示：</p>
+<p><img src="../images/037_regression_rp_classification.jpg" alt=""></p>
+<p>上图在右下角的那些蓝色的点，因为离群了，造成了回归模型必须去考虑这些点的输出值要接近于1。导致原本那些蓝色的点分类效果就变差。</p>
+<blockquote><p>Penalize to the examples that "too correct" [Bishop, P186]</p>
+</blockquote>
+<p>上面是从二分类的角度来看如果用回归的模型去做分类问题可能存在的问题，那如果是一个多分类的问题呢。回归问题中如果两个输入的预测值比较接近，说明了两个输入存在着一种相似的关系。但是这对于多分类来多说完全没有意义，预测为类别1的宝可梦和预测为类别2的宝可梦之间存在什么样的关系，它们和预测类别为10的宝可梦之间有什么关系，这些我们都是不关心的。</p>
+<p><strong>这个问题的本质还是我们对Loss的定义有问题，不能像线性回归那样使用均方误差作为损失函数，因为分类问题中的不同类样本的分布并不是高斯分布。</strong></p>
+<p>那理想的一个分类的模型应该是什么样子呢？</p>
+<p>先从二分类的情况讲起。</p>
+<p>我们希望我们选择的模型$f$，可以让输入$x$，经过变换$g(x)$后，得到一个大于0或小于0的值，通过这样来判断输入的宝可梦属于哪一类。</p>
+$$
+f(x) = 
+\begin{cases} \text{class 1, if   } g(x) &gt;0 \\
+\text{class 2, else   }
+\end{cases} 
+$$<p>我们的损失函数即为判断正确的样本的个数。只关心样本分类的对与错，而不关心错了多远。</p>
+$$L(f) = \sum_n\delta(f(x^n)\neq \hat{y}^n)$$<blockquote><p>但事实上上面的损失函数是行不通的，因为它不可微分！</p>
+</blockquote>
 
 </div>
 </div>
@@ -13204,17 +13179,21 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Machine-Learning-Framework">3. Machine Learning Framework<a class="anchor-link" href="#3.-Machine-Learning-Framework">&#182;</a></h2><p>那么我们如何使用Machine Learning的方法（模型）来做上面的学习任务呢？简单来说只需要三步，就像把大象放进冰箱这么简单。</p>
-<p><img src="../images/002_three_steps.jpg" alt="three_steps"></p>
-<ul>
-<li>Step1: Define a set of funciton</li>
-<li>Step2: Goodness of function</li>
-<li>Step3: Pick the best function</li>
-</ul>
-<h3 id="3.1-Define-a-set-of-funciton">3.1 Define a set of funciton<a class="anchor-link" href="#3.1-Define-a-set-of-funciton">&#182;</a></h3><p>当我们在根据一个特定的问题设计机器学习算法时，首先第一步就是要想好我们的Function Set，我们需要从function set中挑选适合问题的function。那实际上如何来定义这样的Function Set呢，一般需要一些Domain Knowledge，而且一些概率统计的方法也为我们选择function set提供了指导。</p>
-<p>比如对于房屋价格的预测问题，我们就可以挑选线性函数（$\sum_i x_iw_i$）作为我们的Function set，具体挑选哪一个线性函数呢，那将由第二步和第三步来完成。</p>
-<h3 id="3.2-Goodness-of-function">3.2 Goodness of function<a class="anchor-link" href="#3.2-Goodness-of-function">&#182;</a></h3><p>有了一个Function Set后，我们需要定义一个评价函数，用来说明我们从Function set中选择的function的好坏。那么这个评价函数就是关于我们挑选的模型（function）的函数，到后面就知道了，也就是经过常到的<strong>损失函数</strong>。</p>
-<h3 id="3.3-Pick-the-best-function">3.3 Pick the best function<a class="anchor-link" href="#3.3-Pick-the-best-function">&#182;</a></h3><p>当我们有一个function set并且有了关于function的评价函数后，我们就可以挑选出最好的一个function来作为我们要解决的问题的模型函数了。这里往往是一个最优化的问题。</p>
+<h2 id="2.-&#20998;&#31867;&#38382;&#39064;&#30340;&#27010;&#29575;&#24341;&#20837;-&#34013;&#29699;&#19982;&#32511;&#29699;&#38382;&#39064;">2. &#20998;&#31867;&#38382;&#39064;&#30340;&#27010;&#29575;&#24341;&#20837;-&#34013;&#29699;&#19982;&#32511;&#29699;&#38382;&#39064;<a class="anchor-link" href="#2.-&#20998;&#31867;&#38382;&#39064;&#30340;&#27010;&#29575;&#24341;&#20837;-&#34013;&#29699;&#19982;&#32511;&#29699;&#38382;&#39064;">&#182;</a></h2><p><img src="../images/038_box.jpg" alt=""></p>
+<p>在介绍我们的概率生成模型前，我们先回顾一下一个简单的概率问题：有两个盒子，每个里面装的都有蓝球和绿球。现在我两个盒子中间的一个里面随机取出一个球，有下面几个问题：</p>
+<ol>
+<li>这个球来自Box1的概率是多大？</li>
+<li>取的球是蓝球的概率是多大？</li>
+<li>从Box1中随机取一个球，蓝球的概率有多大？</li>
+<li>如果我已经知道取的球是蓝球，那它来自Box1的概率是多大？</li>
+</ol>
+<p>上面的几个问题都很基础，我们用数学符号把它们表示出来：</p>
+<ol>
+<li>$p(\text{Box1}) = 1/2$，两边的球的个数一样</li>
+<li>蓝球可能来自于Box1，也可能来自Box2，它的概率为$p(\text{Blue}) = p(\text{Blue}|\text{Box1})p(\text{Box1}) + p(\text{Blue}|\text{Box2})p(\text{Box2}) = 3/5$</li>
+<li>$p(\text{Blue}|\text{Box1}) = 4/5$</li>
+<li>$p(\text{Box1}|\text{Blue}) = \frac{p(\text{Blue}|\text{Box1})p(\text{Box1})}{p(\text{Blue}|\text{Box1})p(\text{Box1}) + p(\text{Blue}|\text{Box2})p(\text{Box2})} = 2/3$</li>
+</ol>
 
 </div>
 </div>
@@ -13222,21 +13201,13 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-Learning-Map">4. Learning Map<a class="anchor-link" href="#4.-Learning-Map">&#182;</a></h2><p><img src="../images/003_learning_map.jpg" alt="LearnigMap"></p>
-<h3 id="4.1-Regession">4.1 Regession<a class="anchor-link" href="#4.1-Regession">&#182;</a></h3><p>回归模型有一个很明显的特点是：它的输出是一个<code>Scalar</code>，比如预测明天的PM2.5。</p>
-<h3 id="4.2-Classification">4.2 Classification<a class="anchor-link" href="#4.2-Classification">&#182;</a></h3><p>分类问题可以分为二分类或多分类问题。</p>
-<p>对于二分类问题，它的输出一般是“是”或“否”，在数学上我们可以用0或1来表示，也可以用-1与+1来表示，到底用什么来表示，其际上对于问题本身是无所谓的，那在实际的机器学习方法中，我们会根据方法的数学表达的方便来选择合适的值。常见的二分类问题比如垃圾邮件的分类、疾病的诊断等。</p>
-<p>对于多分类问题它的输出是一个类别的标签，在数学表达上我们常用的方法是把输出表示为一个长度等于类别数的一个向量$y = [y_1,y_2,\cdots,y_k]$，其中$k$为类别数。对于输出$y$，哪一个分量最大，则代表输入属于哪一类。常见的多分类问题有：图片的分类、新闻的主题归类等。</p>
-<h3 id="4.3-Semi-supervised-Learning">4.3 Semi-supervised Learning<a class="anchor-link" href="#4.3-Semi-supervised-Learning">&#182;</a></h3><p>上面说的回归与分类问题都是属于有监督的学习问题，它的特点是训练数据都是带有标签的。而实际上搜集大量带标签的数据是一件很难的事情。那针对于现实中大量无标准的数据，我们可以采用半监督的学习方法以及无监督的学习方法。</p>
-<p>这里需要区别的是半监督学习与迁移学习的不同。</p>
-<p>半监督学习解决的问题中有标签的数据与无标签数据是有关系的，属于同一类型的问题，比如我们已经有一些猫和狗的带标签照片，如果把大量没带标签的猫和狗的照片用起来，这是半监督学习要考虑的事。而如果我们已经有很多带标签的猫和狗的照片，我们想训练一个模型来识别大像和老虎的图片，那么这就属于迁移学习的范畴了。</p>
-<h3 id="4.4-Transfer-learning">4.4 Transfer learning<a class="anchor-link" href="#4.4-Transfer-learning">&#182;</a></h3><p>迁移学习解决的是利用已有的一些模型，来做一些新的任务，新任务里的数据和之前模型训练用到的数据是不同类的数据，比如之前的模型是一个动物的分类器，而我们想解决在植物数据集上的的分类问题。</p>
-<p>这个方向只所以能work的原因很大是因为，深度学习的浅层网络部分往往学习到的是一些公共的知识。</p>
-<h3 id="4.5-Unsupervised-Learning">4.5 Unsupervised Learning<a class="anchor-link" href="#4.5-Unsupervised-Learning">&#182;</a></h3><p>无监督学习研究如何让机器通过大量没有label的数据，自动的学习到数据与数据之间的差异以及数据背后的一些潜在的结构或分布。比如通过学习大量图片后，机器能否根据一个code(编码后的数据)自动的生成一张逼近真实的照片</p>
-<h3 id="4.6-Structured-Learning">4.6 Structured Learning<a class="anchor-link" href="#4.6-Structured-Learning">&#182;</a></h3><p>Structured learning是分类与回归问题之外的一种机器学习方法，它的学习目标不是输出一个<code>Scalar</code>或者一个类别标签。而是一个带有结构的数据。比如在语音识别中输出是一个句子，在目标检测中，输出的是目标的位置。</p>
-<h3 id="4.7-Reinforcement-Learning">4.7 Reinforcement Learning<a class="anchor-link" href="#4.7-Reinforcement-Learning">&#182;</a></h3><p>强化学习有点像有监督的学习，但两者又有很大的不同。有监督的学习是learn from teacher，而强化学习是learn from critics。强化学习往往是针对一个多步骤的任务，每一步骤并不能得到实时的反馈，只能根据最终整个任务的完成情况或评价结果来得到反馈。</p>
-<p>举例：AlpahGo中同时用到了有监督的学习与强化学习，在刚才始学习如何下棋时，用的是有监督的学习，根据一些棋谱学习每一步之后下一步应该怎么下。当机器具有基本的下棋能力后，再开始根据每一局对弈的结果进行强化学习，通过机器与机器的下棋来产生大量的棋局进行强化学习。</p>
-<p><img src="../images/004_reinforcement_learning.jpg" alt="Reinforcement Learning"></p>
+<h2 id="3.-&#20108;&#20998;&#31867;&#38382;&#39064;&#30340;&#27010;&#29575;&#35282;&#24230;&#30340;&#23450;&#20041;">3. &#20108;&#20998;&#31867;&#38382;&#39064;&#30340;&#27010;&#29575;&#35282;&#24230;&#30340;&#23450;&#20041;<a class="anchor-link" href="#3.-&#20108;&#20998;&#31867;&#38382;&#39064;&#30340;&#27010;&#29575;&#35282;&#24230;&#30340;&#23450;&#20041;">&#182;</a></h2><p>回到我们二分类问题上来，把上面的两个盒子换成我们要做的二个类别（水系宝可梦和普通宝可梦），每个类别里都有一些不同的宝可梦，用$x$表示。</p>
+<p>由于水系的宝可梦与普通宝可梦数量上可能不同，所以随机出现的一只宝可梦属于两个类别的概率也不一样，分别记为$P(C_1)$和$P(C_2)$，对于给定的一只宝可梦$x$，它可能来自于C1也可能来自于类C2，在类别1中出现的概率为$P(x|C_1)$，在类别2中出现的概率为$P(x|C_2)$，那我们想求的是给于$x$，这到底来自于C1还是C2。</p>
+<p>我们可以通过比较它来自类别1的概率值$P(C_1|x)$与来自类别2的概率值$P(C_2|x)$来判断。如果$P(C_1|x)$大于$P(C_2|x)$则$x$属于C1，反之属于C2。如何计算$P(C_1|x)$呢？（二分类问题中$P(C_2|x) = 1- P(C_1|x)$）</p>
+<p>由上个部分的分析我们知道：</p>
+$$P(C_1|x) = \frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1) + P(x|C_2)P(C_2)}$$<p>观察上面的式子，$P(C_1)$和$P(C_2)$我们可以通过，计算两个类别宝可梦的数量进行计算：</p>
+$$P(C_1) = \frac{N_1}{N_1+N_2},P(C_2) = \frac{N_2}{N_1+N_2}$$<p>我们的关键任务是求$P(x|C_1)$和$P(x|C_2)$，我们是否也可以通过频率的方法来求出来C1中出现了多少个$x$呢？实际上，往往会出现$x$从来没有在C1中出现,但从战斗属性值上来看，$x$与C1中的宝可梦比较接近，不能说$P(x|C_1) = 0$。频率的方法只适合$x$是离散值的情况，比如宝可梦的类别：水系和普通系。对于$x$是连续变量的情况下，我们需要根据概率密度函数来求$P(x|C_1)$和$P(x|C_2)$。</p>
+<p>于是我们就把$x$当作$[x_{hp},x_{def},\cdots]$一个向量来考虑，考虑这个向量属于C1的概率。</p>
 
 </div>
 </div>
@@ -13244,12 +13215,84 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#24635;&#32467;">&#24635;&#32467;<a class="anchor-link" href="#&#24635;&#32467;">&#182;</a></h2><ul>
-<li>AI、机器学习、深度学习的区别。AI是很早就提出来的一种构想，但早期AI都是基于规则的，其中引入的那个漫画比较搞笑，非常讽刺。后来出现了一些经典的机器学习方法，如感知机、神经网络、SVM、决策树、AdaBoosting等。10年后随着算力和数据的提升，神经网络开始变得work起来，并且包装成了新的名词“深度学习”。</li>
-<li>如何定义机器学习。这个目前没有统一的定义，但合理的说法是：让机器从<strong>数据</strong>中来<strong>学习</strong>，并能做<strong>预测</strong>。</li>
-<li>如何用机器学习来解决问题呢，简单概括为3个步骤: 1) 选择一类模型或方法； 2) 定义损失函数； 3) 优化损失函数。</li>
-<li>最后对机器学习中一些场景、任务类型和学习模型进行了分类。需要特别注意的是半监督学习和迁移学习的区别，以及强化学习和监督学习的区别。</li>
-</ul>
+<h2 id="4.-&#36830;&#32493;&#38543;&#26426;&#21464;&#37327;&#30340;&#27010;&#29575;&#20998;&#24067;&#23494;&#24230;&#38382;&#39064;">4. &#36830;&#32493;&#38543;&#26426;&#21464;&#37327;&#30340;&#27010;&#29575;&#20998;&#24067;&#23494;&#24230;&#38382;&#39064;<a class="anchor-link" href="#4.-&#36830;&#32493;&#38543;&#26426;&#21464;&#37327;&#30340;&#27010;&#29575;&#20998;&#24067;&#23494;&#24230;&#38382;&#39064;">&#182;</a></h2><p>我们可以对C1中所有的样本的特征进行统计建模，用一个统计模型来表示一个特征向量$x$属于模型的概率。简化起见，我们这里先只考虑二维的情况，我们选择了宝可梦的二个战斗属性值，Defense和SP Defense，把每个宝可梦都用这样一个二维特征向量来表示。我们把C1中的所有样本（这里有79个样本）的特征微量可视化如下：</p>
+<p><img src="../images/039_feature_vis.jpg" alt=""></p>
+<p>我们这里选择二维高斯统计模型对C1中的79个宝可梦的特征向量进行建模，如图中红色椭圆所示。有了这个模型后，我们就可以评估坐标中任何一个点（代表一只宝可梦的特征向量）属于C1的概率。我们用的高斯模型为：</p>
+$$f_{\mu,\Sigma}(x)=\frac{1}{(2\pi)^{D/2}}\frac{1}{|\Sigma|^{1/2}}\exp{\{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\}}$$<p>其中$\mu$为模型的均值，$\Sigma$为协方差，它是模型的参数，决定了高斯分布的样子，怎么根据一个类别里的样本，求这个样本高斯分布的参数$\mu$和$\Sigma$呢？</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-&#26368;&#22823;&#20284;&#28982;">5. &#26368;&#22823;&#20284;&#28982;<a class="anchor-link" href="#5.-&#26368;&#22823;&#20284;&#28982;">&#182;</a></h2><p>最大似然估计是统计学中常用的根据已有样本，估计分布参数的方法，当我们有一个产生样本的分布$f$时，我们希望我们已经有的样本在该分布中出现的概率越大越好。对于我们宝可梦的问题，我们要估计二维高斯分布的均值，和方差，我们计算该分布在79个样本上的似然为：</p>
+$$L(\mu,\Sigma) = f_{\mu,\Sigma}(x^1)f_{\mu,\Sigma}(x^2),\cdots,f_{\mu,\Sigma}(x^{79})$$<p>我们求解的问题为</p>
+$$\mu^*,\Sigma^* = \arg\max_{\mu,\Sigma}L(\mu,\Sigma)$$<p>根据统计中原来学过的知识，我可直接写出它的最优解为：</p>
+$$\mu^* = \frac{1}{79}\sum^{79}_n x^n, \Sigma^* = \frac{1}{79}\sum^{79}_n(x^n-\mu^*)(x^n-\mu^*)^T$$<p>根据上面的讨论，我们很容易的求出了，水系神奇宝贝和正常系神奇宝贝关于特征向量的分布模型。</p>
+<p><img src="../images/040_gaussian.jpg" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="6.-&#20998;&#31867;&#30340;&#25928;&#26524;">6. &#20998;&#31867;&#30340;&#25928;&#26524;<a class="anchor-link" href="#6.-&#20998;&#31867;&#30340;&#25928;&#26524;">&#182;</a></h2><p>到现在为止，我们已经解决了$P(x|C_1)$和$P(x|C_2)$的问题，下就可以把它们代入公式进一步求解出$P(C_1|x)$</p>
+$$P(C_1|x) = \frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1) + P(x|C_2)P(C_2)}$$<p>如果$P(C_1|x)&gt;0.5$，那么$x$就属于$C_1$，我们实际上跑了一下实验，得到了如下的结果，最终的分类准确率为47%。</p>
+<p><img src="../images/041_result.jpg" alt=""></p>
+<p>结果让我们失望，如果我们瞎猜，理论上都有50%的准确度，可见我们学习出来的模型完全没有用。经过思考，有可能是因为我们选择的特征的问题，我们只选择了[Defense，SP Defense]二维特征向量来表示一个宝可梦，如果选用更多的特征呢。实验后，我们得到了64%的准确率，也一般般，比瞎猜好一些。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="7.-&#24378;&#21152;&#32422;&#26463;&#65292;&#20849;&#20139;&#21327;&#26041;&#24046;">7. &#24378;&#21152;&#32422;&#26463;&#65292;&#20849;&#20139;&#21327;&#26041;&#24046;<a class="anchor-link" href="#7.-&#24378;&#21152;&#32422;&#26463;&#65292;&#20849;&#20139;&#21327;&#26041;&#24046;">&#182;</a></h2><p>在上面求$P(x|C_1)$和$P(x|C_2)$时，我们为每一类的样本分别求$\mu$和$\Sigma$，参数比较多，如果我们在这里做一下简化，把C1的$\Sigma_1$与C2的$\Sigma_2$，只用参数$\Sigma$表示，达到简化整个模型的效果，效果如何呢。</p>
+<p>我们还是通过最大似然法来求解我们的模型参数。</p>
+$$L(\mu_1,\mu_2,\Sigma) = f_{\mu_1,\Sigma}(x^1)f_{\mu_1,\Sigma}(x^2),\cdots,f_{\mu_1,\Sigma}(x^{79})\times f_{\mu_2,\Sigma}(x^{80})f_{\mu_2,\Sigma}(x^{81}),\cdots,f_{\mu_2,\Sigma}(x^{140})$$<p>我们求解的问题变成了：</p>
+$$\mu_1^*,\mu_2^*,\Sigma^* = \arg\max_{\mu_1,\mu_2,\Sigma}L(\mu_1,\mu_2,\Sigma)$$<p>与之前的参数相比，我们求到的$\mu_1,\mu_2$都没有变化，而$\Sigma = \frac{79}{140}\Sigma_1 + \frac{61}{140}\Sigma_2$</p>
+<p>新的模型表现如何呢？实验结果显示得到了73%的准确率，这已经是一个很好的结果了。更重要的是，决策边界的可视化，这时，我们的决策边界变成一线性的。这一点我们在最后一部分解释。</p>
+<p><img src="../images/042_linear_boundary.jpg" alt="Linear Boundary"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="8.-&#26420;&#32032;&#36125;&#39029;&#26031;&#20998;&#31867;&#22120;">8. &#26420;&#32032;&#36125;&#39029;&#26031;&#20998;&#31867;&#22120;<a class="anchor-link" href="#8.-&#26420;&#32032;&#36125;&#39029;&#26031;&#20998;&#31867;&#22120;">&#182;</a></h2><p>让我们回到$P(x|C_1)$和$P(x|C_2)$的求解上来，在上面的求解过程中，我们做了一个假设，就是C1与C2中的样本都服从了高斯分布。如果我们把假设加强，C1中的样本$\{x^1,x^2,\cdots,x^n\}$不光服从高斯分布，而且对于任何样本$x$，它特征的每个维度彼此独立，那么就有：</p>
+$$P(x|C_1) = P(x_1|C_1)P(x_2|C_1)\cdots P(x_k|C_1)\cdots$$<p>其中每个分量$P(x_k|C_1)$都是一个一维的高斯分布。</p>
+<p>如果$x_k = [1, 0, 0, 0, 1,\cdots,1,1]$是一个二值的特征，每一维代表某一类特性的有或无，那$P(x_k|C_1)$则服从Bernoulli分布。</p>
+<p>有这样的假设前提下，我们的分类模型就是Naive Bayes Classifier.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="9.-&#32447;&#24615;&#27169;&#22411;&#30340;&#25968;&#23398;&#35299;&#37322;">9. &#32447;&#24615;&#27169;&#22411;&#30340;&#25968;&#23398;&#35299;&#37322;<a class="anchor-link" href="#9.-&#32447;&#24615;&#27169;&#22411;&#30340;&#25968;&#23398;&#35299;&#37322;">&#182;</a></h2><p>现在来做一些数学上的公式推导，来证明在上面我们找到的那个分类模型$P(C_1|x)$实际上就是一个线性的模型。</p>
+<p>令</p>
+$$z= \ln\frac{P(x|C_1)P(C_1)}{P(x|C_2)P(C_2)}$$<p>则有</p>
+$$P(C_1|x) = \frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1) + P(x|C_2)P(C_2)}$$$$ = \frac{1}{1 + \frac{P(x|C_2)P(C_2)}{P(x|C_1)P(C_1)}} = \frac{1}{1+\exp(-z)} = \sigma(z)$$<p>我们继续对$z$做一些推导</p>
+$$z = \ln\frac{P(x|C_1)P(C_1)}{P(x|C_2)P(C_2)} = \ln\frac{P(x|C_1)}{P(x|C_2)}+\ln\frac{\frac{N_1}{N_1+N_2}}{\frac{N_2}{N_1+N_2}}$$$$\ln\frac{P(x|C_1)}{P(x|C_2)} = \ln\frac{|\Sigma_2|^{1/2}}{|\Sigma_1|^{1/2}} + \left[-\frac{1}{2}(x-\mu_1)^T\Sigma_1^{-1}(x-\mu_1) + \frac{1}{2}(x-\mu_2)^T\Sigma_2^{-1}(x-\mu_2)\right]$$$$(x-\mu)^T\Sigma^{-1}(x-\mu) = x^T\Sigma^{-1}x - x^T\Sigma^{-1}\mu-\mu^T\Sigma^{-1}x+\mu^T\Sigma^{-1}\mu = x^T\Sigma^{-1}x - 2x^T\Sigma^{-1}\mu+\mu^T\Sigma^{-1}\mu$$<p>综合上面三个等式，我们可以把$z$表示为</p>
+$$z = \ln\frac{|\Sigma_2|^{1/2}}{|\Sigma_1|^{1/2}} - \frac{1}{2}x^T\Sigma_1^{-1}x + x^T\Sigma_1^{-1}\mu_1-\frac{1}{2}\mu_1^T\Sigma_1^{-1}\mu_1+\frac{1}{2}x^T\Sigma_2^{-1}x - x^T\Sigma_2^{-1}\mu_2+\frac{1}{2}\mu_2^T\Sigma_2^{-1}\mu_2 + \ln\frac{N_1}{N_2} $$<p>如果我们像之前那样使得$C_1,C_2$共用一个$\Sigma$，那么上面的式子就化简为：</p>
+$$z = (\mu_1-\mu_2)^T\Sigma^{-1}x -\frac{1}{2}\mu_1^T\Sigma^{-1}\mu_1 + \frac{1}{2}\mu_2^T\Sigma^{-1}\mu_2 + \ln\frac{N_1}{N_2}$$<p>也就是$z = w\cdot x+ b$，$P(C_1|x) = \sigma(w\cdot x+ b)$</p>
+<p>转了一大圈，实际上我们就是在求$w,b$，那为什么我们不直接求呢，下一个Note我们就来介绍。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="10.-&#24635;&#32467;">10. &#24635;&#32467;<a class="anchor-link" href="#10.-&#24635;&#32467;">&#182;</a></h2><p>本节正式引入了分类问题的定义，并通过举了一些分类问题的例子。我们可以看到和之前介绍到的回归问题相比，分类问题的输出不是一个具体的数值，而是类别的概念。在对分类问题进行数学建模时，这里有一层转换，一定要将“类别”概念转换为有意义的数值，比如两分类的-1和+1。做法，一般是对属于样本属于某个类别的概率进行建模。</p>
+<p>本节首先从概率的角度来定义了分类问题的数学表达，通过求$P(C_i|x)$来表示$x$属于$C_i$的概率，然后就从概率统计与样本分布假设出发来求$P(C_i|x)$，最直接的方式就是使用贝页斯公式。
+$$P(C_i|x)=\frac{P(C_i,x)}{P(x)}=\frac{P(x|C_i)P(C_i)}{\sum_kP(x|C_k)P(C_k)}$$</p>
+<p>对于$x$是多维边连续变量时，我们把x用一个向量来表示$\mathbf{x}=[x_1,x_2,\cdots,x_n]$，我们可以用高维的高斯分布来作为$P(x|C_k)$的分布，并通过最大似然算法来求出高斯分布的$\mu,\Sigma$。</p>
+<p>最有意思的一点就是，如果强行把所有$P(C_k|x)$的协方差$\Sigma_k$设置为一样的，那么$P(C_i|x)$可以直接表示为$\sigma(z) = \frac{1}{1+\exp(-z)}, z = w\cdot x + b$，也就是Logistic Regression的形式。</p>
 
 </div>
 </div>

@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>机器学习发展与概述</title>
+<title>模型误差的来源</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,66 +13116,13 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-machine-learning">Introduction to machine learning<a class="anchor-link" href="#Introduction-to-machine-learning">&#182;</a></h1><h2 id="1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">1. AI VS. Machine Learning VS. Deep Learning<a class="anchor-link" href="#1.-AI-VS.-Machine-Learning-VS.-Deep-Learning">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 价值1个亿的AI核心代码</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">input_str</span> <span class="o">==</span> <span class="s2">&quot;quit&quot;</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;吗&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;？&#39;</span><span class="p">,</span> <span class="s1">&#39;！&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">input_str</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">input_str</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>在吗？
-在！
-你好
-你好
-能听懂汉语吗？
-能听懂汉语！
-真的吗？
-真的！
-quit
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>AI实际是一个很早就提出来的概念，早在1950年左右，AI概念就已经在全世界流行，虽然那时候计算机也才刚刚问题世。但那个时候的一些AI系统大多都是基于规则的，系统里的逻辑都是人工设定好的逻辑（rule based），而且逻辑都比较简单,这种通过人工手动设计规则的智能是一种伪智能，它永远不可能超过人类，它本身没有任何的free style, 这个时代实际上是人们提出了一种人工智能的愿景，但是没有找到很好的实现AI的方法。</p>
-<p>下面的插图则描绘了当时使用大量<code>hand-craft</code>规则来实现人工智能的尴尬情况。
-<img src="../images/001_ai_inside.jpg" alt="AI Inside"></p>
-<p>1980年左右开始出来了一批以概率统计为基石的机器学习的方法，比如MLP、SVM、Desion Tree等，这些方法使得早期的一些AI概念得到一定的实现。</p>
-<p>到了2010年前后，随着互联网的普及，大量数据产生了，同时计算机的计算能力随着GPU在通用计算上的应用得到大幅度的提升。Deep Learning这个新词汇出现在人们的视野当中，并以星火燎原之势火遍了全球。它实际是算是机器学习中的一种方法，只是因为比较有效，所以流行起来。</p>
-<p>总体来说，50年代的AI实际是一种概念的提出与人们美好的愿景，80年代开始人们找到了机器学习这个手段来实现当初的人工智能的梦想，但受限于方法与计算能力，那个阶段的机器学习方法只在很小的一领域得到了应用。到了21世纪，随着深度学习的野蛮生长，机器学习的方法已经在向各个行业渗透，而且在很多领域取得了比人类更高的准确率，AI开始真正的走向了人类的生活并参与到人类的行业生产中。</p>
+<h1 id="&#27169;&#22411;&#35823;&#24046;&#30340;&#26469;&#28304;">&#27169;&#22411;&#35823;&#24046;&#30340;&#26469;&#28304;<a class="anchor-link" href="#&#27169;&#22411;&#35823;&#24046;&#30340;&#26469;&#28304;">&#182;</a></h1><p>在上一节Regression中，我们通过宝可梦进化后CP值的回归问题把解决机器学习的三个步骤进行了串讲，回顾一下这三个步骤：</p>
+<ol>
+<li>Define a set of funciton</li>
+<li>Goodness of function</li>
+<li>Pick the best function</li>
+</ol>
+<p>这一节我们将回到步骤一上来，介绍我们如何更好的选择一个function set。</p>
 
 </div>
 </div>
@@ -13183,20 +13130,81 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-What-is-Machine-Learning?">2. What is Machine Learning?<a class="anchor-link" href="#2.-What-is-Machine-Learning?">&#182;</a></h2><p>从字面上来理解，Machine Learning一拆为二，Machine指明了主体是一个Machine，我们可以理解为一个Computer或者是一个程序，Learning说明了这个程序具有学习的功能，能够通过大量数据的输入来自动的学习到这些数据的一些潜在规律或形式，在下次再看到一些新的数据时，可以分辨或认出。</p>
-<p>所以<strong>机器学习</strong>在我看来可以定义为：“Giving Computers the Ability to Learn from Data”。</p>
-<p>常见的学习任务比如：</p>
+<h2 id="1.-error&#21040;&#24213;&#20174;&#21738;&#26469;&#65311;">1. error&#21040;&#24213;&#20174;&#21738;&#26469;&#65311;<a class="anchor-link" href="#1.-error&#21040;&#24213;&#20174;&#21738;&#26469;&#65311;">&#182;</a></h2><p>在上一节的最后我们讲到了模型复杂度与过拟合问题，我们发现复杂的模型在traning data上往往有较好的准确度，但是在testing data上表现却不好。让我们更深入的分析一下，当我们选择了一个模型时，无论是在training data上还是testing data上，我们的误差是由什么产生的呢？</p>
+<p>误差来源于<code>Biase</code>和<code>Variance</code>，我们先不解释为什么，先看一下<code>Bias</code>和<code>Variance</code>是什么？</p>
+<p>在统计学中，假设我们研究随机变量$X$，它实际上是服从一个均值为$\mu$，方差为$\sigma$的分布（具体是什么分布，这里不关心），但是具体的$\mu, \sigma$我们是不知道的，我们通过大量的观测得到了一系列$X$的观测值${x^1,x^2,\cdots,x^N}$来对$\mu$和$\sigma$进行估计。根据统计的知识我们可以得到下面的估计：</p>
+$$m = \frac{1}{N}\sum_nx^n$$$$s = \frac{1}{N}\sum_n(x^n-m)^2$$<p>但是我们根据观测数据估计出来的这两个量$m$和$s$与实际的$\mu$和$\sigma$还有差距，那到底差多少呢？有多大的浮动呢？我们先重点关注$m$，计算$m$的均值和方差。</p>
+$$E[m] = \mu$$$$Var[m] = \frac{\sigma^2}{N}$$<p>从上面的式中有可能看到，虽然我们的估计的均值$m$与$\mu$一般来说不相等，但总体趋势上还是在$\mu$附近徘徊的，期望为$mu$，抖动的幅度和$\sigma$与$N$相关。当$N$很大时，也就是我们每次观测到的数据量比较大的时候，这个抖动就很小，我们估算出来的$m$会与$\mu$越接近。</p>
+<p><img src="../images/019_estimator_mu.jpg" alt="Estimat mu"></p>
+<p>回到我们在宝可梦例子中选择Function Set的问题上来，一旦我们选择了一个Model，我们就会根据我们观察到的宝可梦的数据来对Model进行训练，这个过程可以理解为我们在找一个$f^*$作为对真实的模型$\hat{f}$的一个估计。</p>
+<p>既然我们不可能把所有的宝可梦数据全部拿到，我们的训练数据只是其中的一部分，那我们估计出来的$f^*$肯定与$\hat{f}$有差距。这个差距一方面来自于<code>Bias</code>一方面来自于<code>Variance</code>。</p>
+<p>我们把$\hat{f}$想像为一个靶心，我们现在需要命中这个靶心。那在实际操作中，我们最终没有能力命中靶心，那有两种可能的原因：1）我们没有瞄准靶心（bias）；2）我们虽然瞄准了靶心，但是由于风向、机械的不稳定性造成了一定的偏离（Variance）。</p>
+<p><img src="../images/020_target.jpg" alt="Target"></p>
+<p>上面展示了四种打靶的结果：</p>
 <ul>
-<li>语音识别：通过大量语音与对应语言词汇（句子）的学习，机器可以把新输出的语音转换为对应的文本。</li>
-<li>图像识别：机器学习学习大量猫或狗的照片，可以对新的猫或狗的照片进行辨识。</li>
+<li>左上：瞄准了靶心，而且一些干扰因素比较小，我们所有射击都非常接近靶心。（低bias，低Variance）</li>
+<li>右上：虽然瞄准了靶心，但是由于一些外部的干据，最终我们结果都在靶心的周围。（低bias, 高Variance）</li>
+<li>左下：没有瞄准靶心，外部干扰也比较小，结果都集中性的偏离了靶心。（高bias,低Variance）</li>
+<li>右下：既没有瞄准靶心，而且外部的干扰也比较大，结果偏离靶心，但分布散乱。（高bias，高Variance）</li>
 </ul>
-<p>所以从任务上来看，机器学习就是在找一个Function,这个Function可以根据输出得到一个想要的输出，比如：</p>
+<p>联想到我们对于Function Set的选择，如果我们选择的模型比较简单，那我们聚焦的范围就比较小，就不容易瞄准我们真正的靶心（因为靶心都不在我们的视野里），但好处时，简单的模型，不容易受到数据的干扰。反之，如果我们选择比较复杂的模型，则我们聚焦的范围变得广，可选择的Model就多了起来，我们的靶心就容易在视野中出现，但随之而来的问题就是因为模型的复杂，我们的结果比较容易因为数据的波动而产生较大的波动。</p>
+<p>对于宝可梦进化后CP值的回归问题，如果我们选择是简单的线性回归$y = x_{cp}\cdot w + b$，那当我们有多份宝可梦的数据时，我们针对每份数据都求出来一个$f^*$，那这个$f^*$往往有较小的bias。反之，我们如果选择是复杂的线性回归模型$y =x_{cp}^5\cdot w_5 + x_{cp}^4\cdot w_4 + x_{cp}^3\cdot w_3 + x_{cp}^2\cdot w_2 + x_{cp}\cdot w_1 + b$时，我们对于多份数据分别求出来的$\{f^*_1,f^*_2,\cdots\}$就容易有较大的Variance。</p>
+<p><img src="../images/021_simple_and_complex.jpg" alt="Simple and Complex"></p>
+<p>但简的模型可能始终偏离了我们真正的靶心（$\hat{f}$），而如果对多份数据求出来复杂的模型，求它的均值的化，是比较接近到真正的靶心的。</p>
+<p><img src="../images/022_simple_and_complex.jpg" alt="Simple and Complex"></p>
+<p>总结一下，我们选择的一个Function Set，并且用训练数据集在Function set里挑选了一个最佳的model，这个model在实际中的表现出来的误差会来自两个方面，一方面是可能由于模型太简单造成的Bias，一种可能是由于模型复杂带来的Variance。前者称之为<strong>欠拟合</strong>，后者称之为<strong>过拟合</strong>。</p>
+<p><img src="../images/023_bias_and_variance.jpg" alt="Bias and Variance"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-&#35786;&#27573;&#25105;&#20204;&#30340;&#27169;&#22411;">2. &#35786;&#27573;&#25105;&#20204;&#30340;&#27169;&#22411;<a class="anchor-link" href="#2.-&#35786;&#27573;&#25105;&#20204;&#30340;&#27169;&#22411;">&#182;</a></h2><blockquote><p>[TODO] 这部分可以结果NG的Machine Larning做更多的讨论，包括解决过拟合的问题，可以专题讨论。</p>
+</blockquote>
+<p>当我们训练出来的模型在测试数据集上表现不好时，如何判断我们选择的Function Set是偏简单了还是偏复杂了呢，或者说是发生了欠拟合或过拟合呢。有两条简单的判断原则：</p>
+<ol>
+<li>如果我们模型不能很好的fit我们的训练数据，那往往有较大的bias</li>
+<li>如果我们的模型可以很好的fit我们的训练数据，但是在测试数据集上的误差比较大，那很有可能我们有较大的Variance.</li>
+</ol>
+<p>对于欠拟合的问题，我们可以通过下面2个方法来解决：</p>
+<ol>
+<li>增加feature</li>
+<li>选择更复杂的模型</li>
+</ol>
+<p>对于过拟合的问题，以下2个方法通常是比较有效的解决方案：</p>
+<ol>
+<li>增加更多的数据，但这个在实际中可能比较困难</li>
+<li>正则化</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-&#27169;&#22411;&#36873;&#25321;">3. &#27169;&#22411;&#36873;&#25321;<a class="anchor-link" href="#3.-&#27169;&#22411;&#36873;&#25321;">&#182;</a></h2><p>最后的一部分，将介绍在实际训练时，我们应该如何用我们的训练数据与测试数据集来选择我们的最优模型。</p>
+<p>通常我们会把所有有label的数据分为两部分：训练数据与测试数据。这样的分类，极容易让我们犯一个错误，就是在训练数据集上训练多个可能的模型，然后用测试集来挑选最好的那个模型。这样挑选出来的模型往往在实际应用，面对真实的数据时，难以达到我们在测试数据集上的准确度。</p>
+<p>推荐的方法是使用验证数据集来进行model selection。通过将整个数据集分为三个部分：训练集、验证集、测试集。验证集用到做模型选择，测试集只能用来做最好的测试。</p>
+<p><img src="../images/024_validation_set.jpg" alt="Validation Set"></p>
+<p>如果我们的训练集比较少，你会觉得分一部分出来做验证集不好，那可以使用交互验证（cross validation），把训练集等分为多份。每次从中选择一份作为验证集，其他部分作为训练集，训练所有选择的模型。最后再对每种模型的准确率求平均。</p>
+<p><img src="../images/025_cross_validation.jpg" alt="Cross Validation"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-&#24635;&#32467;">4. &#24635;&#32467;<a class="anchor-link" href="#4.-&#24635;&#32467;">&#182;</a></h2><p>本节是比较偏硬核的章节，解释了什么是模型的bias和variance，以及他们如何影响模型在训练集上的误差。可以概括为如下的结论：</p>
 <ul>
-<li>Speech Recognition: f(一段语音信号) = “How are You”</li>
-<li>Image Recognition: f(一张猫的图片) = “Cat”</li>
-<li>Playing Go: f(当前的棋局) = “5-5”（next move）</li>
-<li>Dialogue System: f("Hi") = "Hello"</li>
+<li>模型越简单，参数量越少，表达能力就会很有限，所以往往在训练集上都不能有很低的loss。但是因为参数量少，就说明feature少，所以模型整体表现出来会比较稳定，不会被样本中的噪声干扰。所以它的bais比较大，variance比较小。此时是欠拟合。</li>
+<li>模型越复杂，参数量越多，表达能力就越强，整个参数可搜索空间构成的模型集合非常大，所以可以很好的根据训练集去找到一个模型去cover住训练集中的所有样本。但这时候模型就会变得对噪声敏感，样本的轻微波动，就会导致结果出现很大的不同。所以它的bias比较小，但variance比较大。此时是过拟合。</li>
 </ul>
+<p>在实际实验中，我们要能清晰的定位出我们的模型是欠拟合还是过拟合的，这样我们才能根据问题找到合适的解决方法。</p>
+<p>最后特别要注意的一点：<strong>不要把测试集当作验证集用于做模型选择</strong>！</p>
 
 </div>
 </div>
@@ -13204,52 +13212,15 @@ quit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Machine-Learning-Framework">3. Machine Learning Framework<a class="anchor-link" href="#3.-Machine-Learning-Framework">&#182;</a></h2><p>那么我们如何使用Machine Learning的方法（模型）来做上面的学习任务呢？简单来说只需要三步，就像把大象放进冰箱这么简单。</p>
-<p><img src="../images/002_three_steps.jpg" alt="three_steps"></p>
-<ul>
-<li>Step1: Define a set of funciton</li>
-<li>Step2: Goodness of function</li>
-<li>Step3: Pick the best function</li>
-</ul>
-<h3 id="3.1-Define-a-set-of-funciton">3.1 Define a set of funciton<a class="anchor-link" href="#3.1-Define-a-set-of-funciton">&#182;</a></h3><p>当我们在根据一个特定的问题设计机器学习算法时，首先第一步就是要想好我们的Function Set，我们需要从function set中挑选适合问题的function。那实际上如何来定义这样的Function Set呢，一般需要一些Domain Knowledge，而且一些概率统计的方法也为我们选择function set提供了指导。</p>
-<p>比如对于房屋价格的预测问题，我们就可以挑选线性函数（$\sum_i x_iw_i$）作为我们的Function set，具体挑选哪一个线性函数呢，那将由第二步和第三步来完成。</p>
-<h3 id="3.2-Goodness-of-function">3.2 Goodness of function<a class="anchor-link" href="#3.2-Goodness-of-function">&#182;</a></h3><p>有了一个Function Set后，我们需要定义一个评价函数，用来说明我们从Function set中选择的function的好坏。那么这个评价函数就是关于我们挑选的模型（function）的函数，到后面就知道了，也就是经过常到的<strong>损失函数</strong>。</p>
-<h3 id="3.3-Pick-the-best-function">3.3 Pick the best function<a class="anchor-link" href="#3.3-Pick-the-best-function">&#182;</a></h3><p>当我们有一个function set并且有了关于function的评价函数后，我们就可以挑选出最好的一个function来作为我们要解决的问题的模型函数了。这里往往是一个最优化的问题。</p>
+<h2 id="&#25193;&#23637;&#38405;&#35835;">&#25193;&#23637;&#38405;&#35835;<a class="anchor-link" href="#&#25193;&#23637;&#38405;&#35835;">&#182;</a></h2><p><strong>什么是过拟合，为什么正则化可以缓解过拟合。</strong></p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-Learning-Map">4. Learning Map<a class="anchor-link" href="#4.-Learning-Map">&#182;</a></h2><p><img src="../images/003_learning_map.jpg" alt="LearnigMap"></p>
-<h3 id="4.1-Regession">4.1 Regession<a class="anchor-link" href="#4.1-Regession">&#182;</a></h3><p>回归模型有一个很明显的特点是：它的输出是一个<code>Scalar</code>，比如预测明天的PM2.5。</p>
-<h3 id="4.2-Classification">4.2 Classification<a class="anchor-link" href="#4.2-Classification">&#182;</a></h3><p>分类问题可以分为二分类或多分类问题。</p>
-<p>对于二分类问题，它的输出一般是“是”或“否”，在数学上我们可以用0或1来表示，也可以用-1与+1来表示，到底用什么来表示，其际上对于问题本身是无所谓的，那在实际的机器学习方法中，我们会根据方法的数学表达的方便来选择合适的值。常见的二分类问题比如垃圾邮件的分类、疾病的诊断等。</p>
-<p>对于多分类问题它的输出是一个类别的标签，在数学表达上我们常用的方法是把输出表示为一个长度等于类别数的一个向量$y = [y_1,y_2,\cdots,y_k]$，其中$k$为类别数。对于输出$y$，哪一个分量最大，则代表输入属于哪一类。常见的多分类问题有：图片的分类、新闻的主题归类等。</p>
-<h3 id="4.3-Semi-supervised-Learning">4.3 Semi-supervised Learning<a class="anchor-link" href="#4.3-Semi-supervised-Learning">&#182;</a></h3><p>上面说的回归与分类问题都是属于有监督的学习问题，它的特点是训练数据都是带有标签的。而实际上搜集大量带标签的数据是一件很难的事情。那针对于现实中大量无标准的数据，我们可以采用半监督的学习方法以及无监督的学习方法。</p>
-<p>这里需要区别的是半监督学习与迁移学习的不同。</p>
-<p>半监督学习解决的问题中有标签的数据与无标签数据是有关系的，属于同一类型的问题，比如我们已经有一些猫和狗的带标签照片，如果把大量没带标签的猫和狗的照片用起来，这是半监督学习要考虑的事。而如果我们已经有很多带标签的猫和狗的照片，我们想训练一个模型来识别大像和老虎的图片，那么这就属于迁移学习的范畴了。</p>
-<h3 id="4.4-Transfer-learning">4.4 Transfer learning<a class="anchor-link" href="#4.4-Transfer-learning">&#182;</a></h3><p>迁移学习解决的是利用已有的一些模型，来做一些新的任务，新任务里的数据和之前模型训练用到的数据是不同类的数据，比如之前的模型是一个动物的分类器，而我们想解决在植物数据集上的的分类问题。</p>
-<p>这个方向只所以能work的原因很大是因为，深度学习的浅层网络部分往往学习到的是一些公共的知识。</p>
-<h3 id="4.5-Unsupervised-Learning">4.5 Unsupervised Learning<a class="anchor-link" href="#4.5-Unsupervised-Learning">&#182;</a></h3><p>无监督学习研究如何让机器通过大量没有label的数据，自动的学习到数据与数据之间的差异以及数据背后的一些潜在的结构或分布。比如通过学习大量图片后，机器能否根据一个code(编码后的数据)自动的生成一张逼近真实的照片</p>
-<h3 id="4.6-Structured-Learning">4.6 Structured Learning<a class="anchor-link" href="#4.6-Structured-Learning">&#182;</a></h3><p>Structured learning是分类与回归问题之外的一种机器学习方法，它的学习目标不是输出一个<code>Scalar</code>或者一个类别标签。而是一个带有结构的数据。比如在语音识别中输出是一个句子，在目标检测中，输出的是目标的位置。</p>
-<h3 id="4.7-Reinforcement-Learning">4.7 Reinforcement Learning<a class="anchor-link" href="#4.7-Reinforcement-Learning">&#182;</a></h3><p>强化学习有点像有监督的学习，但两者又有很大的不同。有监督的学习是learn from teacher，而强化学习是learn from critics。强化学习往往是针对一个多步骤的任务，每一步骤并不能得到实时的反馈，只能根据最终整个任务的完成情况或评价结果来得到反馈。</p>
-<p>举例：AlpahGo中同时用到了有监督的学习与强化学习，在刚才始学习如何下棋时，用的是有监督的学习，根据一些棋谱学习每一步之后下一步应该怎么下。当机器具有基本的下棋能力后，再开始根据每一局对弈的结果进行强化学习，通过机器与机器的下棋来产生大量的棋局进行强化学习。</p>
-<p><img src="../images/004_reinforcement_learning.jpg" alt="Reinforcement Learning"></p>
+<pre><code>- https://www.zhihu.com/question/20700829
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#24635;&#32467;">&#24635;&#32467;<a class="anchor-link" href="#&#24635;&#32467;">&#182;</a></h2><ul>
-<li>AI、机器学习、深度学习的区别。AI是很早就提出来的一种构想，但早期AI都是基于规则的，其中引入的那个漫画比较搞笑，非常讽刺。后来出现了一些经典的机器学习方法，如感知机、神经网络、SVM、决策树、AdaBoosting等。10年后随着算力和数据的提升，神经网络开始变得work起来，并且包装成了新的名词“深度学习”。</li>
-<li>如何定义机器学习。这个目前没有统一的定义，但合理的说法是：让机器从<strong>数据</strong>中来<strong>学习</strong>，并能做<strong>预测</strong>。</li>
-<li>如何用机器学习来解决问题呢，简单概括为3个步骤: 1) 选择一类模型或方法； 2) 定义损失函数； 3) 优化损失函数。</li>
-<li>最后对机器学习中一些场景、任务类型和学习模型进行了分类。需要特别注意的是半监督学习和迁移学习的区别，以及强化学习和监督学习的区别。</li>
-</ul>
+</code></pre>
+<p><strong>什么是模型的bias和variance</strong></p>
+
+<pre><code>- https://www.zhihu.com/question/27068705
+- https://zhuanlan.zhihu.com/p/28673680</code></pre>
 
 </div>
 </div>
